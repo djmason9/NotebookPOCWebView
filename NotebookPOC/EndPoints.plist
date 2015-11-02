@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>get_notebook_list</key>
+	<string>/books/%@/pages/%@/users/%@/notes</string>
+	<key>PRODUCTION</key>
+	<dict>
+		<key>notebook</key>
+		<string>http://nightly-nbapi.elasticbeanstalk.com/api/v1/notebook</string>
+	</dict>
+	<key>PPE</key>
+	<dict>
+		<key>notebook</key>
+		<string>http://nightly-nbapi.elasticbeanstalk.com/api/v1/notebook</string>
+	</dict>
+	<key>DEVELOPMENT</key>
+	<dict>
+		<key>notebook</key>
+		<string>http://nightly-nbapi.elasticbeanstalk.com/api/v1/notebook</string>
+	</dict>
+</dict>
+</plist>

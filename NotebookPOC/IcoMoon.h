@@ -1,0 +1,17 @@
+//
+//  FontIcon.h
+//  iFRDDomotics
+//
+//  Created by Sebastien on 5/15/13.
+//  Copyright (c) 2013 Sebastien. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "IcoMoon.h"
+
+@interface IcoMoon : NSObject
+
++(NSString *)iconString:(char *)icon;
++(char *)getIconFromString:(NSString*)defineName;
+
+@end
