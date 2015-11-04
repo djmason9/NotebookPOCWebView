@@ -1,0 +1,14 @@
+body {
+	font-family:"Avenir-Roman";
+    font-size:14px;
+    -webkit-touch-callout: none;
+}
+
+b{
+    font-family:"Avenir-Heavy";
+}
+
+i{
+    font-family:"Avenir-Oblique";
+}
+

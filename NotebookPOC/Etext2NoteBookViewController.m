@@ -12,7 +12,7 @@
 #import "Etext2Utility.h"
 #import "NSString+FontAwesome.h"
 #import "UIFont+FontAwesome.h"
-#import "Etext2CustomUITextView.h"
+#import "Etext2CustomUIWebView.h"
 #import "Etext2CustomEditUIButton.h"
 
 //all these can be deleted
@@ -20,6 +20,7 @@
 #define SERVER_STAGE @"PPE"
 #define SERVER_PROD @"PRODUCTION"
 #define HIGHLIGHT_COLOR [UIColor colorWithRed:59.0/255.0 green:163.0/255.0 blue:255.0/255.0 alpha:1]
+
 
 #define EDIT_OPEN @"isOpen"
 
@@ -32,7 +33,7 @@
     NSString *_pageId;
     NSString *_userId;
 }
-@property (weak, nonatomic) UITextView *currentInputTextField;
+//@property (weak, nonatomic) Etext2CustomUIWebView *currentInputWebView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray *dataSource;
@@ -48,6 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -68,7 +70,7 @@
     _tableView.hidden = YES;
     //set up a user book and page needs to be dynamic
     _bookId =@"786856f8-be28-4083-9099-6c6eda8a29eb";
-    _pageId = @"4fddc2fc-4b80-44fa-a6c3-5ac61a69556e";//@"60d9f594-7fcf-4d4a-a7d9-0ebc31ec2b3b";//
+    _pageId = @"6cd7611c-1e8b-4959-843c-78ebb844abc7";//@"60d9f594-7fcf-4d4a-a7d9-0ebc31ec2b3b";//
     _userId = @"demoUser";
     
     
@@ -115,7 +117,7 @@
 //                                        NSLog(@"Success! %@",noteArray);
                                         
                                         //sort by date
-                                        NSSortDescriptor *sortType = [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO];
+                                        NSSortDescriptor *sortType = [NSSortDescriptor sortDescriptorWithKey:@"updated" ascending:NO];
                                         NSArray *sortDescriptors = [NSArray arrayWithObject:sortType];
                                         noteArray = [[noteArray sortedArrayUsingDescriptors:sortDescriptors]mutableCopy];
                                         
@@ -193,8 +195,11 @@
     NSDictionary *noteDict = [self.dataSource objectAtIndex:indexPath.row];
     NSString *contentString = noteDict[@"content"];
     
-    UITextField *label = (UITextField *)[cell viewWithTag:NOTE_TEXT];;
-    label.attributedText = [Etext2Utility stringByStrippingHTML:[Etext2Utility formatHTMLString:contentString]];
+    Etext2CustomUIWebView *label = (Etext2CustomUIWebView *)[cell viewWithTag:NOTE_TEXT];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setOpaque:NO];
+//    label.attributedText = [Etext2Utility stringByStrippingHTML:[Etext2Utility formatHTMLString:contentString]];
+    [label loadHTMLString:contentString baseURL:nil];
     
     UIView *editViewBox = ((UIView*)[cell viewWithTag:EDIT_BOX]);
     
@@ -204,13 +209,14 @@
     
     if(noteDict[EDIT_OPEN] && [noteDict[EDIT_OPEN] boolValue]){
         editViewBox.hidden = NO;
-        Etext2CustomUITextView *textView = ((Etext2CustomUITextView*)[cell viewWithTag:TEXT_BOX]);
+        Etext2CustomUIWebView *textView = ((Etext2CustomUIWebView*)[cell viewWithTag:TEXT_BOX]);
         //reset any selected buttons
         [self resetButtons:cell];
-        textView.attributedText = [Etext2Utility stringByStrippingHTML:[Etext2Utility formatHTMLString:contentString]];
+        NSAttributedString *attributedContent = [Etext2Utility stringByStrippingHTML:[Etext2Utility formatHTMLString:contentString]]; //needed for count
+        [textView loadHTMLStringForEdit:contentString];
         
-        //get word count
-        ((UILabel*)[cell viewWithTag:WORD_COUNT]).text = [NSString stringWithFormat:@"%ld", (long)textView.text.length];
+        //get letter count
+        ((UILabel*)[cell viewWithTag:WORD_COUNT]).text = [NSString stringWithFormat:@"%ld", (long)attributedContent.string.length];
         
     }else{
         editViewBox.hidden = YES;
@@ -222,6 +228,7 @@
     
     return cell;
 }
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -238,16 +245,21 @@
     
     if ( noteString != nil && [noteString length] > 0 )
     {
-        attributedText = [[NSAttributedString alloc] initWithString:noteString attributes:@{NSFontAttributeName: attributeFont}];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+        
+        NSAttributedString *attrNoteString = [[NSAttributedString alloc] initWithString:noteString];
+        attributedText = [[NSAttributedString alloc] initWithString:[[Etext2Utility stringByStrippingHTML:attrNoteString] string] attributes:@{NSFontAttributeName: attributeFont, NSParagraphStyleAttributeName: paragraphStyle}];
+        
         titleRect = [attributedText boundingRectWithSize:(CGSize){350, CGFLOAT_MAX}
                                                  options:NSStringDrawingUsesLineFragmentOrigin
                                                  context:nil];
         
-        if(titleRect.size.height > 58){ //more than one line
+        if(titleRect.size.height > 55){ //more than one line
             if (dic[EDIT_OPEN] && [dic[EDIT_OPEN] boolValue]) {
                 return 180.0;
             }
-            return titleRect.size.height;
+            return titleRect.size.height+30; //account for the date
         }
         
         if (dic[EDIT_OPEN] && [dic[EDIT_OPEN] boolValue]) {
@@ -266,16 +278,6 @@
     
 }
 
-//does actual undo
-- (void)undoTextFieldEdit: (NSAttributedString*)string
-{
-    //registers every key stroke or action
-    [self.undoManager registerUndoWithTarget:self
-                                    selector:@selector(undoTextFieldEdit:)
-                                      object:self.currentInputTextField.attributedText];
-    
-    self.currentInputTextField.attributedText = string;
-}
 
 #pragma mark - Table view delegate
 
@@ -298,15 +300,10 @@
     [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
-
 #pragma mark - note actions from Cell Delegate
-- (void)attributeButtonPressed{
-    [self undoTextFieldEdit:self.currentInputTextField.attributedText];
-}
-
 - (void)doUndo:(UITableViewCell *)cell{
     
-    [self.undoManager undo];
+
     
     if([self.undoManager canUndo])
         [((Etext2CustomEditUIButton*)[cell viewWithTag:UNDO]) setButtonEnableState:YES];
@@ -317,7 +314,7 @@
     
 }
 - (void)doRedo:(UITableViewCell *)cell{
-    [self.undoManager redo];
+
     
     if([self.undoManager canRedo])
         [((Etext2CustomEditUIButton*)[cell viewWithTag:REDO]) setButtonEnableState:YES];
@@ -342,107 +339,6 @@
     [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [_tableView endUpdates];
 }
-
--(void)resetSelectedText:(UITableViewCell *)cell{
-    
-    Etext2CustomUITextView *textBox = ((Etext2CustomUITextView*)[cell viewWithTag:TEXT_BOX]);
-    [textBox resetSelectedRange];
-}
-
-#pragma mark - UITextViewDelegate
-
-- (void)textViewDidChange:(UITextView *)textView{
-    
-    Etext2NoteBookTableViewCell *cell = (Etext2NoteBookTableViewCell*)textView.superview.superview.superview.superview;
-    
-    //update count
-    ((UILabel*)[cell viewWithTag:WORD_COUNT]).text = [NSString stringWithFormat:@"%ld", (long)textView.text.length];
-    
-    [cell doStringAttribution:textView.selectedRange fromAllText:textView.attributedText withHandler:nil];
-    
-    [((Etext2CustomEditUIButton*)[cell viewWithTag:UNDO]) setButtonEnableState:YES];
-}
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
-    //listen for every action happening in the text box  
-    [self undoTextFieldEdit:textView.attributedText];
-    
-     NSLog(@"Can undo: %@",textView.text);
-    
-    return YES;
-}
-- (void)textViewDidBeginEditing:(UITextView *)textView{
-
-    Etext2NoteBookTableViewCell *cell = (Etext2NoteBookTableViewCell*)textView.superview.superview.superview.superview;
-    [_tableView scrollToRowAtIndexPath:[_tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    
-    //a new box has been chosen
-    self.currentInputTextField = textView;
-    [self.undoManager removeAllActions]; //clear out old undos
-}
-
-/**
- *  Listens for changed in the selection and sets up the buttons
- *
- *  @param textView
- */
-- (void)textViewDidChangeSelection:(UITextView *)textView{
-
-    NSAttributedString *allText = textView.attributedText;
-    NSRange textRange = textView.selectedRange;
-    
-    UIView *parentView = (UITableViewCell*)textView.superview;
-    
-    if (textRange.length <=0) { //if nothing is selected do nothing
-        return;
-    }
-    
-    ((Etext2CustomUITextView*)textView).lastSelectedRange = textRange;
-    
-    Etext2CustomEditUIButton *italicButton = (Etext2CustomEditUIButton*)[parentView viewWithTag:ITALIC];
-    Etext2CustomEditUIButton *boldButton = (Etext2CustomEditUIButton*)[parentView viewWithTag:BOLD];
-    Etext2CustomEditUIButton *underlineButton = (Etext2CustomEditUIButton*)[parentView viewWithTag:UNDERLINE];
-
-    //turn off the buttons
-    [italicButton setUpButtonUnSelectedStyle];
-    [boldButton setUpButtonUnSelectedStyle];
-    [underlineButton setUpButtonUnSelectedStyle];
-    
-    [allText enumerateAttributesInRange:textRange options:NSAttributedStringEnumerationLongestEffectiveRangeNotRequired usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {    
-        
-        for (id attributeType in attrs) {
-            //check for any underlines
-            if([attributeType isEqualToString:@"NSUnderline"]){
-                [underlineButton setUpButtonSelectedStyle];
-            }
-            //check for existing formatting.
-            if([attributeType isEqualToString:@"NSFont"]){
-               NSLog(@"%@",((UIFont*)attrs[attributeType]).fontName);
-
-                if ([((UIFont*)attrs[attributeType]).fontName rangeOfString:@"Oblique"].location != NSNotFound) {
-                    [italicButton setUpButtonSelectedStyle];
-
-                }
-                
-                if ([((UIFont*)attrs[attributeType]).fontName rangeOfString:@"Heavy"].location != NSNotFound) {
-                    [boldButton setUpButtonSelectedStyle];
-
-                }
-                
-                if ([((UIFont*)attrs[attributeType]).fontName rangeOfString:@"HeavyOblique"].location != NSNotFound) {
-                    
-                    [italicButton setUpButtonSelectedStyle];
-                    [boldButton setUpButtonSelectedStyle];
-                    
-                }
-            }
-        }
-    
-    }];
-    
-}
-
 
 #pragma mark - keyboard notifications
 - (void)keyboardWillShow:(NSNotification *)notification

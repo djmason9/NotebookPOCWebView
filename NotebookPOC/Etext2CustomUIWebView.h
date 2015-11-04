@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Etext2CustomUITextView : UITextView
+@interface Etext2CustomUIWebView : UIWebView
 
     @property (nonatomic,assign) NSRange lastSelectedRange;
 
-    -(void)resetSelectedRange;
-    - (void)applyAttributeToTypingAttribute:(id)attribute forKey:(NSString *)key;
+    -(void)loadHTMLStringForEdit:(NSString *)string;
 
 @end

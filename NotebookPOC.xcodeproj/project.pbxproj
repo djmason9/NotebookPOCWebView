@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC5EC4F41BE015CE00F13089 /* Etext2CustomUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EC4F31BE015CE00F13089 /* Etext2CustomUITextView.m */; };
+		BC5EC4F41BE015CE00F13089 /* Etext2CustomUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EC4F31BE015CE00F13089 /* Etext2CustomUIWebView.m */; };
 		BC8CD4D11BD8588E0026E538 /* Etext2Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8CD4D01BD8588E0026E538 /* Etext2Utility.m */; };
 		BC96B49A1BD7FDA000032F5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC96B4991BD7FDA000032F5E /* main.m */; };
 		BC96B49D1BD7FDA000032F5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC96B49C1BD7FDA000032F5E /* AppDelegate.m */; };
@@ -34,6 +34,7 @@
 		BC97BD2D1BDA9D2B00879EBA /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97BD281BDA9D2B00879EBA /* NSString+FontAwesome.m */; };
 		BC97BD2E1BDA9D2B00879EBA /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97BD2A1BDA9D2B00879EBA /* UIFont+FontAwesome.m */; };
 		BC97BD311BDAA07500879EBA /* Etext2NoteBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97BD301BDAA07500879EBA /* Etext2NoteBookTableViewCell.m */; };
+		BCBCD3E91BEA60E500643986 /* www in Resources */ = {isa = PBXBuildFile; fileRef = BC22A62F1BE8033900FCE68E /* www */; };
 		BCDE648D1BDAEF0600567779 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC97BD331BDAAB4600879EBA /* FontAwesome.ttf */; };
 		BCE3F1651BE14957007B5BE2 /* Etext2CustomEditUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3F1641BE14957007B5BE2 /* Etext2CustomEditUIButton.m */; };
 /* End PBXBuildFile section */
@@ -49,8 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC5EC4F21BE015CE00F13089 /* Etext2CustomUITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Etext2CustomUITextView.h; sourceTree = "<group>"; };
-		BC5EC4F31BE015CE00F13089 /* Etext2CustomUITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Etext2CustomUITextView.m; sourceTree = "<group>"; };
+		BC22A62F1BE8033900FCE68E /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		BC5EC4F21BE015CE00F13089 /* Etext2CustomUIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Etext2CustomUIWebView.h; sourceTree = "<group>"; };
+		BC5EC4F31BE015CE00F13089 /* Etext2CustomUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Etext2CustomUIWebView.m; sourceTree = "<group>"; };
 		BC8CD4CF1BD8588E0026E538 /* Etext2Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Etext2Utility.h; sourceTree = "<group>"; };
 		BC8CD4D01BD8588E0026E538 /* Etext2Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Etext2Utility.m; sourceTree = "<group>"; };
 		BC96B4941BD7FDA000032F5E /* NotebookPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotebookPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,8 +131,9 @@
 		BC5EC4F11BE0159E00F13089 /* CustomElement */ = {
 			isa = PBXGroup;
 			children = (
-				BC5EC4F21BE015CE00F13089 /* Etext2CustomUITextView.h */,
-				BC5EC4F31BE015CE00F13089 /* Etext2CustomUITextView.m */,
+				BC22A62F1BE8033900FCE68E /* www */,
+				BC5EC4F21BE015CE00F13089 /* Etext2CustomUIWebView.h */,
+				BC5EC4F31BE015CE00F13089 /* Etext2CustomUIWebView.m */,
 				BCE3F1631BE14957007B5BE2 /* Etext2CustomEditUIButton.h */,
 				BCE3F1641BE14957007B5BE2 /* Etext2CustomEditUIButton.m */,
 			);
@@ -358,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCDE648D1BDAEF0600567779 /* FontAwesome.ttf in Resources */,
+				BCBCD3E91BEA60E500643986 /* www in Resources */,
 				BC96B4A31BD7FDA000032F5E /* Main.storyboard in Resources */,
 				BC96B4C01BD7FDEB00032F5E /* EndPoints.plist in Resources */,
 				BC96B4A81BD7FDA000032F5E /* LaunchScreen.xib in Resources */,
@@ -390,7 +394,7 @@
 				BC96B4E41BD8129A00032F5E /* AFURLRequestSerialization.m in Sources */,
 				BC96B4A01BD7FDA000032F5E /* Etext2RootViewController.m in Sources */,
 				BC97BD311BDAA07500879EBA /* Etext2NoteBookTableViewCell.m in Sources */,
-				BC5EC4F41BE015CE00F13089 /* Etext2CustomUITextView.m in Sources */,
+				BC5EC4F41BE015CE00F13089 /* Etext2CustomUIWebView.m in Sources */,
 				BC96B4E51BD8129A00032F5E /* AFURLResponseSerialization.m in Sources */,
 				BC97BD2E1BDA9D2B00879EBA /* UIFont+FontAwesome.m in Sources */,
 				BC96B49D1BD7FDA000032F5E /* AppDelegate.m in Sources */,

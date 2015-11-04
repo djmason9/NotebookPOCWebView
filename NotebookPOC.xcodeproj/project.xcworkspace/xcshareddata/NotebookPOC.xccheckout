@@ -12,20 +12,24 @@
 	<dict>
 		<key>1139FA676C9A453957B13C58CFD22A417561F5C5</key>
 		<string>https://github.com/djmason9/notebookPOC.git</string>
+		<key>4068625E1917E7787CB4E38CF4C2D8AE093CE711</key>
+		<string>https://github.com/djmason9/NotebookPOCWebView.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>NotebookPOC.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1139FA676C9A453957B13C58CFD22A417561F5C5</key>
+		<string>../../../NotebookPOC</string>
+		<key>4068625E1917E7787CB4E38CF4C2D8AE093CE711</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/djmason9/notebookPOC.git</string>
+	<string>https://github.com/djmason9/NotebookPOCWebView.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>1139FA676C9A453957B13C58CFD22A417561F5C5</string>
+	<string>4068625E1917E7787CB4E38CF4C2D8AE093CE711</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>1139FA676C9A453957B13C58CFD22A417561F5C5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>NotebookPOC</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4068625E1917E7787CB4E38CF4C2D8AE093CE711</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NotebookPOCWebView</string>
 		</dict>
 	</array>
 </dict>

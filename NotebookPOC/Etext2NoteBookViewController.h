@@ -10,7 +10,7 @@
 #import "Etext2NoteBookTableViewCell.h"
 
 
-@interface Etext2NoteBookViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource,Etext2NoteBookCellDelegate,UITextViewDelegate>
+@interface Etext2NoteBookViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource,Etext2NoteBookCellDelegate>
 
 
 @end

@@ -95,24 +95,31 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqo-Fh-qH6">
-                                                    <rect key="frame" x="5" y="0.0" width="334" height="68"/>
+                                                <webView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xhg-gs-eb7" customClass="Etext2CustomUIWebView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="68"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="334" id="tyt-H0-J4H"/>
+                                                        <constraint firstAttribute="width" constant="334" id="xgr-t7-daT"/>
                                                     </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do  deiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed dLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do  deiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.o  deiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textView>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="fLK-UJ-JYq" id="gEy-gj-bd5"/>
+                                                    </connections>
+                                                </webView>
                                                 <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGD-Pd-DOU" userLabel="edit view">
                                                     <rect key="frame" x="-7" y="0.0" width="365" height="178"/>
                                                     <subviews>
                                                         <view tag="200" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eE5-QQ-AXm">
                                                             <rect key="frame" x="20" y="8" width="325" height="100"/>
                                                             <subviews>
+                                                                <webView tag="89" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EwQ-Ce-smv" customClass="Etext2CustomUIWebView">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="325" height="60"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="fLK-UJ-JYq" id="UxB-yJ-neO"/>
+                                                                    </connections>
+                                                                </webView>
                                                                 <view tag="99" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VlI-XE-P4d">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="325" height="40"/>
+                                                                    <rect key="frame" x="0.0" y="60" width="325" height="40"/>
                                                                     <subviews>
                                                                         <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVV-97-uh9" customClass="Etext2CustomEditUIButton">
                                                                             <rect key="frame" x="11" y="5" width="30" height="30"/>
@@ -176,17 +183,8 @@
                                                                     </subviews>
                                                                     <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </view>
-                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="89" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Xg-7g-iq7" customClass="Etext2CustomUITextView">
-                                                                    <rect key="frame" x="0.0" y="40" width="325" height="60"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                    <connections>
-                                                                        <outlet property="delegate" destination="2rR-xm-17c" id="PW5-eh-yfd"/>
-                                                                    </connections>
-                                                                </textView>
                                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Av-n6-FA8" userLabel="bottomborder">
-                                                                    <rect key="frame" x="0.0" y="40" width="325" height="1"/>
+                                                                    <rect key="frame" x="0.0" y="60" width="325" height="1"/>
                                                                     <color key="backgroundColor" red="0.68235294117647061" green="0.68235294117647061" blue="0.68235294117647061" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </view>
                                                             </subviews>
@@ -216,9 +214,9 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="uqo-Fh-qH6" secondAttribute="bottom" constant="-2" id="3nZ-Ty-qE6"/>
-                                                <constraint firstItem="uqo-Fh-qH6" firstAttribute="top" secondItem="4Ir-BU-nBm" secondAttribute="topMargin" constant="-8" id="UJ4-1F-ViT"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Xhg-gs-eb7" secondAttribute="bottom" constant="-2" id="UUc-bs-JNA"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="r5A-rc-dRw" secondAttribute="bottom" constant="2" id="gJ8-Fe-fIh"/>
+                                                <constraint firstItem="Xhg-gs-eb7" firstAttribute="top" secondItem="4Ir-BU-nBm" secondAttribute="topMargin" constant="-8" id="xah-Gp-idK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

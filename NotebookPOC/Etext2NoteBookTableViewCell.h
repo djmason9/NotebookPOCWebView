@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Etext2CustomEditUIButton.h"
-
+#import "Etext2CustomUIWebView.h"
 //delete all these fonts
 #define APPLICATION_STANDARD_FONT @"Avenir-Roman"
 #define APPLICATION_BOLD_FONT @"Avenir-Heavy"
@@ -25,18 +25,20 @@
 
 @required
 - (void)doDoneEditing:(UITableViewCell *)cell;
-- (void)resetSelectedText:(UITableViewCell *)cell;
 - (void)doUndo:(UITableViewCell *)cell;
 - (void)doRedo:(UITableViewCell *)cell;
-- (void)attributeButtonPressed;
+
+
 @end
 
-@interface Etext2NoteBookTableViewCell : UITableViewCell
+@interface Etext2NoteBookTableViewCell : UITableViewCell<UIWebViewDelegate>
+
+    //public properties
     @property(nonatomic,weak) id <Etext2NoteBookCellDelegate> cellDelegate;
     @property(nonatomic,weak) NSString *selectedText;
 
 
-//public methods
+    //public methods
     -(void)buttonAction:(Etext2CustomEditUIButton*)button;
-    -(void)doStringAttribution:(NSRange)selectedRange fromAllText:(NSAttributedString*)allString withHandler:(void (^)(NSMutableAttributedString*))handler;
+
 @end

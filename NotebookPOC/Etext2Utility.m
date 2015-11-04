@@ -84,25 +84,32 @@
 +(NSAttributedString *)stringByStrippingHTML:(NSAttributedString*)htmlString
 {
     NSRange range;
-    
+    BOOL isOrderedList = NO;
+    NSInteger count = 1;
     NSMutableAttributedString *string = [htmlString mutableCopy];
+    
+    if([[htmlString string] rangeOfString:@"<ol>"].location != NSNotFound){
+        isOrderedList = YES;
+    }
     
     while ((range = [[string mutableString] rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
     {
         NSString *subString = [[string mutableString] substringWithRange:range];
-        if([subString isEqualToString:@"<em>"])
-        {
-            NSRange range2 = [[string mutableString] rangeOfString:@"</em>"];
-            long length = range2.location - range.location - range.length;
-            long location = range.location + range.length;
-            NSRange boldRange = NSMakeRange(location, length);
-            
-            [string addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1] range:boldRange];
-            [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.0f green:0.33f blue:0.0f alpha:1.0f] range:boldRange];
-        }
         
-        [[string mutableString] replaceCharactersInRange:range withString:@""];
+        if([subString isEqualToString:@"</li>"]){
+            [[string mutableString] replaceCharactersInRange:range withString:@"\n"];
+        }else if([subString isEqualToString:@"<li>"]){
+            
+            if(isOrderedList){
+                [[string mutableString] replaceCharactersInRange:range withString:[NSString stringWithFormat: @"%ld.\t ", (long)count]];
+                count ++;
+            }else
+                [[string mutableString] replaceCharactersInRange:range withString:@"\u25E6\t"];
+            
+        }else
+            [[string mutableString] replaceCharactersInRange:range withString:@""];
     }
+    
     return string;
 }
 
