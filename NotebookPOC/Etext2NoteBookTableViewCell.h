@@ -25,9 +25,6 @@
 
 @required
 - (void)doDoneEditing:(UITableViewCell *)cell;
-- (void)doUndo:(UITableViewCell *)cell;
-- (void)doRedo:(UITableViewCell *)cell;
-
 
 @end
 

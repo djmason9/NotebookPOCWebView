@@ -49,10 +49,11 @@
 -(void)loadHTMLStringForEdit:(NSString *)string{
     
     NSURL *cssUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"default" ofType:@"css" inDirectory:@"www"]];
-    
+    NSURL *jsUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"custom" ofType:@"js" inDirectory:@"www"]];
+    NSURL *JQUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"jquery-2.1.4.min" ofType:@"js" inDirectory:@"www"]];
     
     //add some custom css stuff
-    string = [NSString stringWithFormat:@"<html><head><link href=\"%@\" type=\"text/css\" rel=\"stylesheet\"/></head><body contenteditable=\"true\">%@</body></html>",cssUrl,string];
+    string = [NSString stringWithFormat:@"<html><head><script src=\"%@\"></script><script src=\"%@\"></script><link href=\"%@\" type=\"text/css\" rel=\"stylesheet\"/></head><body contenteditable=\"true\">%@</body></html>",JQUrl,jsUrl,cssUrl,string];
 
     
     [ super loadHTMLString:string baseURL:nil];
@@ -83,6 +84,8 @@
 {
     return YES;
 }
+
+
 
 
 

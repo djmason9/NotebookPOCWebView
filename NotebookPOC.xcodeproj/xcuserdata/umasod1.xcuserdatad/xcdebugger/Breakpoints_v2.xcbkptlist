@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NotebookPOC/Etext2CustomUIWebView.m"
-            timestampString = "468368496.3544"
+            timestampString = "468373693.169922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "-loadHTMLStringForEdit:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NotebookPOC/Etext2NoteBookTableViewCell.m"
-            timestampString = "468368496.3544"
+            timestampString = "468429009.314288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "-buttonAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NotebookPOC/Etext2NoteBookTableViewCell.m"
-            timestampString = "468368496.3544"
+            timestampString = "468429009.314288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-buttonAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -87,13 +87,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NotebookPOC/Etext2NoteBookViewController.m"
-            timestampString = "468370428.903046"
+            filePath = "NotebookPOC/Etext2NoteBookTableViewCell.m"
+            timestampString = "468429313.859345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
-            landmarkName = "-tableView:heightForRowAtIndexPath:"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

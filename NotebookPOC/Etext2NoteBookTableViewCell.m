@@ -22,21 +22,25 @@ enum EditType{
     Underline
 };
 
+@interface Etext2NoteBookTableViewCell(){
+}
+    @property(nonatomic,strong)NSString *beginingBodyText;
+    @property(nonatomic,strong)NSString *redoTextState;
+@end
 @implementation Etext2NoteBookTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
-
     [self hydrateCell];
 }
 
 #pragma mark - Actions
 - (void)buttonAction:(Etext2CustomEditUIButton*)selectedButton {
 
-    
-    
     UIView *parentView = selectedButton.superview.superview;
     Etext2CustomUIWebView *textView = (Etext2CustomUIWebView*)[parentView viewWithTag:TEXT_BOX];
+    Etext2CustomEditUIButton *redoButton = (Etext2CustomEditUIButton*)[self viewWithTag:REDO];
+    Etext2CustomEditUIButton *undoButon = (Etext2CustomEditUIButton*)[self viewWithTag:UNDO];
 //    NSString *selectedText = [textView stringByEvaluatingJavaScriptFromString:@"window.getSelection().toString()"];
     
     switch (selectedButton.tag) {
@@ -61,23 +65,76 @@ enum EditType{
         }
         case UNDO:
         {
+            _redoTextState = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+            
+            [redoButton setButtonEnableState:YES]; //set redo on since we did an undo
+            
             [textView stringByEvaluatingJavaScriptFromString:@"document.execCommand(\"undo\")"];
-            NSLog(@"UNDO ACTION SENT!");
-            [self.cellDelegate doUndo:self];
+            //check button state
+            if ([self canUndo]) {
+                [undoButon setButtonEnableState:YES];
+            }else{
+                [undoButon setButtonEnableState:NO];
+            }
             break;
         }
         case REDO:
         {
+
             [textView stringByEvaluatingJavaScriptFromString:@"document.execCommand(\"redo\")"];
-            NSLog(@"REDO ACTION SENT!");
-            [self.cellDelegate doRedo:self];
+
+            
+            //check button state
+            if ([self canRedo]) {
+                [redoButton setButtonEnableState:YES];
+            }else{
+                [redoButton setButtonEnableState:NO];
+            }
+            
+            if ([self canUndo]) {
+                [undoButon setButtonEnableState:YES];
+            }else{
+                [undoButon setButtonEnableState:NO];
+            }
+            
+            
             break;
         }
-
     }
 }
 
+-(BOOL)canUndo{
+    Etext2CustomUIWebView *textView = (Etext2CustomUIWebView*)[self viewWithTag:TEXT_BOX];
+    NSString *currentBodyText = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+    return ![_beginingBodyText isEqualToString:currentBodyText];
+}
+-(BOOL)canRedo{
+    
+    Etext2CustomUIWebView *textView = (Etext2CustomUIWebView*)[self viewWithTag:TEXT_BOX];
+    NSString *currentBodyText = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+    return ![_redoTextState isEqualToString:currentBodyText];
+}
 
+#pragma mark - webviewdelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *requestURLString = [request.URL absoluteString];
+    Etext2CustomUIWebView *textView = (Etext2CustomUIWebView*)[self viewWithTag:TEXT_BOX];
+    
+    // If it's a pxeframe scheme used for getting messages from WEB JS, then just
+    if ([requestURLString rangeOfString:@"etext2webEdit"].location != NSNotFound) //key press
+    {
+        //set undo state
+        Etext2CustomEditUIButton *undoButon = (Etext2CustomEditUIButton*)[self viewWithTag:UNDO];
+        [undoButon setButtonEnableState:YES];
+
+    }else if ([requestURLString rangeOfString:@"etext2webFocus"].location != NSNotFound) {//focus
+        //take a snap shot of the box for undo
+        _beginingBodyText = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+        NSLog(@"%@",_beginingBodyText);
+    }
+    
+    return YES;
+}
 
 - (IBAction)doneEditingNote:(id)sender {
     

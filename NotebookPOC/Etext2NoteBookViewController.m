@@ -300,28 +300,6 @@
     [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
-#pragma mark - note actions from Cell Delegate
-- (void)doUndo:(UITableViewCell *)cell{
-    
-
-    
-    if([self.undoManager canUndo])
-        [((Etext2CustomEditUIButton*)[cell viewWithTag:UNDO]) setButtonEnableState:YES];
-    else
-        [((Etext2CustomEditUIButton*)[cell viewWithTag:UNDO]) setButtonEnableState:NO];
-    
-    
-    
-}
-- (void)doRedo:(UITableViewCell *)cell{
-
-    
-    if([self.undoManager canRedo])
-        [((Etext2CustomEditUIButton*)[cell viewWithTag:REDO]) setButtonEnableState:YES];
-    else
-        [((Etext2CustomEditUIButton*)[cell viewWithTag:REDO]) setButtonEnableState:NO];
-}
-
 - (void)doDoneEditing:(UITableViewCell *)cell {
 
     cell.frame = CGRectMake(0, 0, 350, cell.frame.size.height - 100);
