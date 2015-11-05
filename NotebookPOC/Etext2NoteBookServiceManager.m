@@ -39,10 +39,9 @@
     }];
 }
 
-+(void)saveNote:(NSString*)apiURL bodyText:(NSString*)bodyText withHandler:(void (^)(NSString*, NSError*))handler{
++(void)saveNote:(NSString*)apiURL bodyText:(NSString*)jsonString withHandler:(void (^)(NSString*, NSError*))handler{
 
 //    //set up the body
-    NSString *jsonString = [NSString stringWithFormat:@"{\"content\":\"%@\",\"autoSave\":true}",bodyText];
     NSData *postdata = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
 
     
@@ -65,7 +64,7 @@
         }
         
     }];
-
 }
+
 
 @end

@@ -154,11 +154,14 @@ enum EditType{
     Etext2CustomUIWebView *textView = (Etext2CustomUIWebView*)[self viewWithTag:TEXT_BOX];
     NSString *bodyText = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
 
+    NSString *jsonString = [NSString stringWithFormat:@"{\"content\":\"%@\",\"autoSave\":true}",bodyText];
+//    NSString *jsonString = [NSString stringWithFormat:@"{\"content\":\"%@\",\"contentType\":\"n\"}",bodyText];
+    
     NSString *noteBookSave = [Etext2WebClient getEndpointURLForKey:@"notbook_sav"];
     NSString *apiURL = [noteBookAPI stringByAppendingString:[NSString stringWithFormat:noteBookSave,BOOK_ID,PAGE_ID,USER_ID,self.noteId]];
 
     //save to server
-    [Etext2NoteBookServiceManager saveNote:apiURL bodyText:bodyText withHandler:^(NSString *successMsg, NSError *error) {
+    [Etext2NoteBookServiceManager saveNote:apiURL bodyText:jsonString withHandler:^(NSString *successMsg, NSError *error) {
         if(!error){
             NSLog(@"SAVED %@",successMsg);
         }else{

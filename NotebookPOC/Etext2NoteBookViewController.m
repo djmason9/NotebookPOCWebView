@@ -229,6 +229,9 @@
         if (dic[EDIT_OPEN] && [dic[EDIT_OPEN] boolValue]) {
             return 180.0;
         }
+    }else if(dic[EDIT_OPEN]){ //new row
+        return 180.0;
+    
     }
     
     return 75; //accomedates one line and a date
@@ -242,6 +245,47 @@
     
 }
 
+- (IBAction)addNote:(UIButton *)sender {
+    /*
+    {
+        archived = 0;
+        content = "1st note<br />";
+        contentType = n;
+        created = "2015-10-20T11:09:00.124Z";
+        isHidden = 0;
+        objectId = "e571ba4d-bf0c-485a-bc06-bb98413829ea";
+        pageId = "4fddc2fc-4b80-44fa-a6c3-5ac61a69556e";
+        saved = 1;
+        updated = "2015-10-20T11:09:01.562Z";
+        userId = demoUser;
+    }
+    */
+    
+    NSDate *today = [NSDate new];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+    NSString *dateStr = [dateFormatter stringFromDate:today];
+    
+    //set new note on table
+    NSMutableDictionary *newNote =[NSMutableDictionary new];
+    [newNote setObject:@"" forKey:@"content"];
+    [newNote setObject:@"n" forKey:@"contentType"];
+    [newNote setObject:dateStr forKey:@"created"];
+    [newNote setObject:@(YES) forKey:EDIT_OPEN];
+    
+    [self.dataSource insertObject:newNote atIndex:0];
+    
+    NSInteger row =  0;//specify a row where you need to add new row
+    NSInteger section = 0; //specify the section where the new row to be added,
+    //section = 1 here since you need to add row at second section
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+    [self.tableView endUpdates];
+    //save new blank note
+}
 
 #pragma mark - Table view delegate
 
