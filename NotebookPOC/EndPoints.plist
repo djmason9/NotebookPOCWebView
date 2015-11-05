@@ -4,6 +4,8 @@
 <dict>
 	<key>get_notebook_list</key>
 	<string>/books/%@/pages/%@/users/%@/notes</string>
+	<key>notbook_sav</key>
+	<string>/books/%@/pages/%@/users/%@/notes/%@/save</string>
 	<key>PRODUCTION</key>
 	<dict>
 		<key>notebook</key>

@@ -8,11 +8,11 @@
 
 #import "Etext2NoteBookTableViewCell.h"
 #import "Etext2WebClient.h"
-#import "AFNetworking.h"
 #import "Etext2Utility.h"
 #import "Etext2NoteBookTableViewCell.h"
 #import "Etext2CustomEditUIButton.h"
 #import "Etext2CustomUIWebView.h"
+#import "Etext2NoteBookServiceManager.h"
 
 
 enum EditType{
@@ -96,8 +96,7 @@ enum EditType{
             }else{
                 [undoButon setButtonEnableState:NO];
             }
-            
-            
+        
             break;
         }
     }
@@ -126,11 +125,14 @@ enum EditType{
         //set undo state
         Etext2CustomEditUIButton *undoButon = (Etext2CustomEditUIButton*)[self viewWithTag:UNDO];
         [undoButon setButtonEnableState:YES];
+        
+        //TODO:auto save?
+        
 
     }else if ([requestURLString rangeOfString:@"etext2webFocus"].location != NSNotFound) {//focus
         //take a snap shot of the box for undo
         _beginingBodyText = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-        NSLog(@"%@",_beginingBodyText);
+//        NSLog(@"%@",_beginingBodyText);
     }
     
     return YES;
@@ -138,6 +140,32 @@ enum EditType{
 
 - (IBAction)doneEditingNote:(id)sender {
     
+    //TODO: remove this when merging
+    NSDictionary *endPointDictionary = [Etext2WebClient dictionaryFromPlist:@"EndPoints"];
+    NSDictionary *serverList = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [endPointDictionary objectForKey:SERVER_DEVLOPMENT],
+                                SERVER_DEVLOPMENT,[endPointDictionary objectForKey:SERVER_STAGE],
+                                SERVER_STAGE,[endPointDictionary objectForKey:SERVER_PROD],
+                                SERVER_PROD , nil];
+    
+    
+    NSString  *noteBookAPI = serverList[SERVER_DEVLOPMENT][@"notebook"];
+    
+    Etext2CustomUIWebView *textView = (Etext2CustomUIWebView*)[self viewWithTag:TEXT_BOX];
+    NSString *bodyText = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+
+    NSString *noteBookSave = [Etext2WebClient getEndpointURLForKey:@"notbook_sav"];
+    NSString *apiURL = [noteBookAPI stringByAppendingString:[NSString stringWithFormat:noteBookSave,BOOK_ID,PAGE_ID,USER_ID,self.noteId]];
+
+    //save to server
+    [Etext2NoteBookServiceManager saveNote:apiURL bodyText:bodyText withHandler:^(NSString *successMsg, NSError *error) {
+        if(!error){
+            NSLog(@"SAVED %@",successMsg);
+        }else{
+            NSLog(@"FAIL");
+        }
+        //push save label
+    }];
     [self.cellDelegate doDoneEditing:self];
 }
 

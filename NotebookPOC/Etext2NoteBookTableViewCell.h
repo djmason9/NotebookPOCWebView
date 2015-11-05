@@ -19,8 +19,6 @@
 
 
 
-
-
 @protocol Etext2NoteBookCellDelegate <NSObject>
 
 @required
@@ -33,6 +31,7 @@
     //public properties
     @property(nonatomic,weak) id <Etext2NoteBookCellDelegate> cellDelegate;
     @property(nonatomic,weak) NSString *selectedText;
+    @property(nonatomic,weak) NSString *noteId;
 
 
     //public methods

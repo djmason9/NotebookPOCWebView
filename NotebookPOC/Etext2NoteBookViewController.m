@@ -8,17 +8,14 @@
 
 #import "Etext2NoteBookViewController.h"
 #import "Etext2WebClient.h"
-#import "AFNetworking.h"
 #import "Etext2Utility.h"
 #import "NSString+FontAwesome.h"
 #import "UIFont+FontAwesome.h"
 #import "Etext2CustomUIWebView.h"
 #import "Etext2CustomEditUIButton.h"
+#import "Etext2NoteBookServiceManager.h"
 
 //all these can be deleted
-#define SERVER_DEVLOPMENT @"DEVELOPMENT"
-#define SERVER_STAGE @"PPE"
-#define SERVER_PROD @"PRODUCTION"
 #define HIGHLIGHT_COLOR [UIColor colorWithRed:59.0/255.0 green:163.0/255.0 blue:255.0/255.0 alpha:1]
 
 
@@ -28,10 +25,6 @@
 
     NSString *_noteBookAPI;
     BOOL _keyboardIsShown;
-    
-    NSString *_bookId;
-    NSString *_pageId;
-    NSString *_userId;
 }
 //@property (weak, nonatomic) Etext2CustomUIWebView *currentInputWebView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomConstraint;
@@ -64,16 +57,10 @@
     self.mdyDateFormatter = [[NSDateFormatter alloc] init];
     [self.mdyDateFormatter setDateStyle:NSDateFormatterShortStyle];
     
-//    _tableView.rowHeight = UITableViewAutomaticDimension;
-//    _tableView.estimatedRowHeight = 100;
-    
     _tableView.hidden = YES;
-    //set up a user book and page needs to be dynamic
-    _bookId =@"786856f8-be28-4083-9099-6c6eda8a29eb";
-    _pageId = @"6cd7611c-1e8b-4959-843c-78ebb844abc7";//@"60d9f594-7fcf-4d4a-a7d9-0ebc31ec2b3b";//
-    _userId = @"demoUser";
+
     
-    
+    //this will be handled in the app i think
     NSDictionary *endPointDictionary = [Etext2WebClient dictionaryFromPlist:@"EndPoints"];
     NSDictionary *serverList = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [endPointDictionary objectForKey:SERVER_DEVLOPMENT],
@@ -90,49 +77,24 @@
 }
 
 -(void)getNotebookList{
+    
     NSString *noteBookList = [Etext2WebClient getEndpointURLForKey:@"get_notebook_list"];
-    NSString *apiURL = [_noteBookAPI stringByAppendingString:[NSString stringWithFormat:noteBookList,_bookId,_pageId,_userId]];
-    
-//    NSLog(@"%@",apiURL);
-    
-    [self callService:apiURL];
+    NSString *apiURL = [_noteBookAPI stringByAppendingString:[NSString stringWithFormat:noteBookList,BOOK_ID,PAGE_ID,USER_ID]];
 
-    
-}
+    [Etext2NoteBookServiceManager getNotes:apiURL withHandler:^(NSArray *sortedArray, NSError *error) {
+        if(!error){
+            _tableView.hidden = NO;
 
--(void)callService:(NSString*)apiURL{
+            self.dataSource = [sortedArray mutableCopy];
+            [self.tableView reloadData];
 
-    AFHTTPRequestOperationManager *client = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:apiURL]];
-    client.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURL]];
-    [request addValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    
-    AFHTTPRequestOperation * req = [client HTTPRequestOperationWithRequest:request
-                                                                   success:^(AFHTTPRequestOperation *operation, id responseObject)
-                                    {
-                                        _tableView.hidden = NO;
-                                        NSArray *noteArray = responseObject[@"data"];
-                                        
-//                                        NSLog(@"Success! %@",noteArray);
-                                        
-                                        //sort by date
-                                        NSSortDescriptor *sortType = [NSSortDescriptor sortDescriptorWithKey:@"updated" ascending:NO];
-                                        NSArray *sortDescriptors = [NSArray arrayWithObject:sortType];
-                                        noteArray = [[noteArray sortedArrayUsingDescriptors:sortDescriptors]mutableCopy];
-                                        
-                                        self.dataSource = [noteArray mutableCopy];
-                                        [self.tableView reloadData];
-                                        
-                                        [_spinner stopAnimating];
-                                    
-                                    }
-                                                                   failure:^(AFHTTPRequestOperation *operation, NSError *error)
-                                    {
-                                        NSLog(@"Fail! %@",error);
-                                    }];
-    
-    [req start];
+            [_spinner stopAnimating];
+        
+        }else{
+            //do error stuff
+        }
+    }];
+
 }
 
 -(NSDate*)formateDate:(NSString*)dateString{
@@ -194,6 +156,8 @@
     cell.cellDelegate = self;
     NSDictionary *noteDict = [self.dataSource objectAtIndex:indexPath.row];
     NSString *contentString = noteDict[@"content"];
+    NSString *noteId = noteDict[@"objectId"];
+    cell.noteId = noteId;
     
     Etext2CustomUIWebView *label = (Etext2CustomUIWebView *)[cell viewWithTag:NOTE_TEXT];
     [label setBackgroundColor:[UIColor clearColor]];
@@ -304,12 +268,14 @@
 
     cell.frame = CGRectMake(0, 0, 350, cell.frame.size.height - 100);
     UIView *editView = ((UIView*)[cell viewWithTag:EDIT_BOX]);
-        
+    Etext2CustomUIWebView *editTextView = (Etext2CustomUIWebView*)[cell viewWithTag:TEXT_BOX];
+    
     editView.hidden = YES;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
     NSMutableDictionary *tempDict = [self.dataSource[indexPath.row] mutableCopy];
     tempDict[EDIT_OPEN] = @(NO);
+    tempDict[@"content"] = [editTextView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]; //reset content
     
     self.dataSource[indexPath.row] = tempDict;
     
