@@ -14,6 +14,8 @@
 #import "Etext2CustomUIWebView.h"
 #import "Etext2CustomEditUIButton.h"
 #import "Etext2NoteBookServiceManager.h"
+#import "IcoMoon.h"
+#import "k12UniversalIcons.h"
 
 //all these can be deleted
 #define HIGHLIGHT_COLOR [UIColor colorWithRed:59.0/255.0 green:163.0/255.0 blue:255.0/255.0 alpha:1]
@@ -29,6 +31,8 @@
 //@property (weak, nonatomic) Etext2CustomUIWebView *currentInputWebView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *addNewBtn;
+@property (weak, nonatomic) IBOutlet UIButton *allNotesBtn;
 @property (strong,nonatomic) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UIView *editView;
@@ -70,6 +74,45 @@
 
     
     _noteBookAPI = serverList[SERVER_DEVLOPMENT][@"notebook"];
+    
+    
+    //set up buttons
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setAlignment:NSTextAlignmentCenter];
+    
+    
+    UIFont *font1 = [UIFont fontWithName:APPLICATION_STANDARD_FONT size:STANDARD_FONT_SIZE];
+    UIFont *font2 = [UIFont fontWithName:kFontk12UniversalIcons size:12];
+    
+    NSDictionary *dict1 = @{NSUnderlineStyleAttributeName:@(NSUnderlineStyleNone),
+                            NSFontAttributeName:font1,
+                            NSParagraphStyleAttributeName:style}; // Added line
+    NSDictionary *dict2 = @{NSUnderlineStyleAttributeName:@(NSUnderlineStyleNone),
+                            NSFontAttributeName:font2,
+                            NSParagraphStyleAttributeName:style}; // Added line
+    
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] init];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:[IcoMoon iconString:k12_ADD_NOTE] attributes:dict2]];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:@" Add Note" attributes:dict1]];
+    
+    [_addNewBtn setAttributedTitle:attString forState:UIControlStateNormal];
+    [[_addNewBtn titleLabel] setNumberOfLines:0];
+    _addNewBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _addNewBtn.layer.borderWidth = 1;
+    [_addNewBtn setBackgroundColor:[UIColor whiteColor]];
+    [_addNewBtn setTintColor:[UIColor darkGrayColor]];
+    
+    attString = [[NSMutableAttributedString alloc] init];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:[IcoMoon iconString:k12_NOTEBOOK] attributes:dict2]];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:@" All Notes" attributes:dict1]];
+    [_allNotesBtn setAttributedTitle:attString forState:UIControlStateNormal];
+    [[_allNotesBtn titleLabel] setNumberOfLines:0];
+    _allNotesBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _allNotesBtn.layer.borderWidth = 1;
+    [_allNotesBtn setBackgroundColor:[UIColor whiteColor]];
+    [_allNotesBtn setTintColor:[UIColor darkGrayColor]];
+
+
     
     [self getNotebookList];
     
@@ -244,22 +287,11 @@
         [((Etext2CustomEditUIButton*)[cell viewWithTag:i]) setUpButtonUnSelectedStyle];
     
 }
+- (IBAction)allNotes:(id)sender {
+    
+}
 
 - (IBAction)addNote:(UIButton *)sender {
-    /*
-    {
-        archived = 0;
-        content = "1st note<br />";
-        contentType = n;
-        created = "2015-10-20T11:09:00.124Z";
-        isHidden = 0;
-        objectId = "e571ba4d-bf0c-485a-bc06-bb98413829ea";
-        pageId = "4fddc2fc-4b80-44fa-a6c3-5ac61a69556e";
-        saved = 1;
-        updated = "2015-10-20T11:09:01.562Z";
-        userId = demoUser;
-    }
-    */
     
     NSDate *today = [NSDate new];
     

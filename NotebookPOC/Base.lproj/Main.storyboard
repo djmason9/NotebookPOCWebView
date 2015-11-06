@@ -8,6 +8,9 @@
         <mutableArray key="FontAwesome.ttf">
             <string>FontAwesome</string>
         </mutableArray>
+        <mutableArray key="k12_universal_icons.ttf">
+            <string>k12_universal_icons</string>
+        </mutableArray>
     </customFonts>
     <scenes>
         <!--Etext2 Root View Controller-->
@@ -72,11 +75,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iz3-Ru-4rV" userLabel="dark banner">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="43"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Q9-sW-5Lo">
+                                        <rect key="frame" x="307" y="0.0" width="43" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="43" id="22M-vi-c8f"/>
+                                            <constraint firstAttribute="height" constant="43" id="m3P-44-gXS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="k12_universal_icons" family="k12_universal_icons" pointSize="15"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleColor" red="0.80000000000000004" green="0.89019607840000003" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="5Q9-sW-5Lo" secondAttribute="trailing" constant="5" id="Udz-Lp-cgL"/>
+                                    <constraint firstAttribute="width" constant="350" id="b4Y-Rp-DnI"/>
+                                    <constraint firstAttribute="height" constant="43" id="yd0-kK-bp7"/>
+                                </constraints>
+                            </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="flp-md-h76">
-                                <rect key="frame" x="165" y="274" width="20" height="20"/>
+                                <rect key="frame" x="165" y="350" width="20" height="20"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" sectionHeaderHeight="42" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JCj-Eh-a3r">
-                                <rect key="frame" x="0.0" y="50" width="350" height="550"/>
+                                <rect key="frame" x="0.0" y="130" width="350" height="550"/>
                                 <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -228,28 +254,55 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2S5-1t-t9L">
-                                <rect key="frame" x="268" y="8" width="66" height="30"/>
+                                <rect key="frame" x="233" y="92" width="109" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Add Note">
+                                    <color key="titleColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="addNote:" destination="2rR-xm-17c" eventType="touchUpInside" id="gGR-jV-YID"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9I-DB-G1Z">
+                                <rect key="frame" x="6" y="92" width="109" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="All Notes">
+                                    <color key="titleColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="allNotes:" destination="2rR-xm-17c" eventType="touchUpInside" id="ohT-AI-waw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Notebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBE-FL-CSl">
+                                <rect key="frame" x="28" y="54" width="288" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="1RT-96-OQe"/>
+                                    <constraint firstAttribute="height" constant="26" id="kEC-Vd-aKl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                                <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="flp-md-h76" secondAttribute="centerX" id="D3G-Jr-hOz"/>
-                            <constraint firstAttribute="centerY" secondItem="flp-md-h76" secondAttribute="centerY" constant="16" id="VZf-A1-Wsv"/>
+                            <constraint firstItem="PBE-FL-CSl" firstAttribute="leading" secondItem="wWu-gX-cf9" secondAttribute="leadingMargin" constant="10" id="fW7-gK-6WX"/>
                             <constraint firstItem="hbv-va-zIe" firstAttribute="top" secondItem="JCj-Eh-a3r" secondAttribute="bottom" id="gqV-j4-0t2"/>
+                            <constraint firstItem="PBE-FL-CSl" firstAttribute="top" secondItem="FbW-Ka-Spi" secondAttribute="bottom" constant="54" id="mcO-OP-rfk"/>
                             <constraint firstAttribute="centerX" secondItem="JCj-Eh-a3r" secondAttribute="centerX" id="mnB-Fu-7hy"/>
-                            <constraint firstItem="JCj-Eh-a3r" firstAttribute="top" secondItem="FbW-Ka-Spi" secondAttribute="bottom" constant="50" id="ri5-PB-gvl"/>
+                            <constraint firstItem="JCj-Eh-a3r" firstAttribute="top" secondItem="FbW-Ka-Spi" secondAttribute="bottom" constant="130" id="ri5-PB-gvl"/>
+                            <constraint firstAttribute="centerY" secondItem="flp-md-h76" secondAttribute="centerY" constant="-60" id="ydt-Zn-NCt"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="350" height="600"/>
                     <connections>
+                        <outlet property="addNewBtn" destination="2S5-1t-t9L" id="RTO-Ll-lOD"/>
+                        <outlet property="allNotesBtn" destination="c9I-DB-G1Z" id="Dvk-vg-msO"/>
                         <outlet property="spinner" destination="flp-md-h76" id="2wq-uA-Dqw"/>
                         <outlet property="tableView" destination="JCj-Eh-a3r" id="MMT-Ru-tjM"/>
                         <outlet property="tableViewBottomConstraint" destination="gqV-j4-0t2" id="OeI-cg-JT6"/>
