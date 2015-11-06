@@ -23,6 +23,7 @@ enum EditType{
 };
 
 @interface Etext2NoteBookTableViewCell(){
+    NSTimer *_myTimer;
 }
     @property(nonatomic,strong)NSString *beginingBodyText;
     @property(nonatomic,strong)NSString *redoTextState;
@@ -32,6 +33,7 @@ enum EditType{
 - (void)awakeFromNib {
     // Initialization code
     [self hydrateCell];
+    
 }
 
 #pragma mark - Actions
@@ -126,7 +128,13 @@ enum EditType{
         Etext2CustomEditUIButton *undoButon = (Etext2CustomEditUIButton*)[self viewWithTag:UNDO];
         [undoButon setButtonEnableState:YES];
         
-        //TODO:auto save?
+        [_myTimer invalidate];
+        //auto save but only do it every once in awhile
+        _myTimer = [NSTimer scheduledTimerWithTimeInterval:3.0
+                                         target:self
+                                       selector:@selector(autoSave:)
+                                       userInfo:nil
+                                        repeats:NO];
         
 
     }else if ([requestURLString rangeOfString:@"etext2webFocus"].location != NSNotFound) {//focus
@@ -137,9 +145,25 @@ enum EditType{
     
     return YES;
 }
+/**
+ *  Run a save command based on a timer
+ *
+ *  @param timer
+ */
+-(void)autoSave:(NSTimer *)timer{
+    [self doSave];
+}
 
 - (IBAction)doneEditingNote:(id)sender {
     
+    [self doSave];
+    [self.cellDelegate doDoneEditing:self];
+}
+/**
+ *  Saves a note via the Notebook API
+ */
+-(void)doSave{
+
     //TODO: remove this when merging
     NSDictionary *endPointDictionary = [Etext2WebClient dictionaryFromPlist:@"EndPoints"];
     NSDictionary *serverList = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -153,7 +177,7 @@ enum EditType{
     
     Etext2CustomUIWebView *textView = (Etext2CustomUIWebView*)[self viewWithTag:TEXT_BOX];
     NSString *bodyText = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-
+    
     NSString *jsonString;
     NSString *noteBookServiceUrl;
     NSString *apiURL;
@@ -168,7 +192,7 @@ enum EditType{
         
         apiURL = [noteBookAPI stringByAppendingString:[NSString stringWithFormat:noteBookServiceUrl,BOOK_ID,PAGE_ID,USER_ID,self.noteId]];
     }
-
+    
     //save to server
     [Etext2NoteBookServiceManager saveNote:apiURL bodyText:jsonString withHandler:^(NSString *successMsg, NSError *error) {
         if(!error){
@@ -178,7 +202,7 @@ enum EditType{
         }
         //push save label
     }];
-    [self.cellDelegate doDoneEditing:self];
+    
 }
 
 #pragma mark - Private Methods
