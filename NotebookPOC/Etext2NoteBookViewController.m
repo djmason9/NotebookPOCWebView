@@ -81,19 +81,20 @@
     [style setAlignment:NSTextAlignmentCenter];
     
     
+    //icon buttons
     UIFont *font1 = [UIFont fontWithName:APPLICATION_STANDARD_FONT size:STANDARD_FONT_SIZE];
     UIFont *font2 = [UIFont fontWithName:kFontk12UniversalIcons size:12];
     
-    NSDictionary *dict1 = @{NSUnderlineStyleAttributeName:@(NSUnderlineStyleNone),
+    NSDictionary *fontStyle1 = @{NSUnderlineStyleAttributeName:@(NSUnderlineStyleNone),
                             NSFontAttributeName:font1,
-                            NSParagraphStyleAttributeName:style}; // Added line
-    NSDictionary *dict2 = @{NSUnderlineStyleAttributeName:@(NSUnderlineStyleNone),
+                            NSParagraphStyleAttributeName:style};
+    NSDictionary *fontStyle2 = @{NSUnderlineStyleAttributeName:@(NSUnderlineStyleNone),
                             NSFontAttributeName:font2,
-                            NSParagraphStyleAttributeName:style}; // Added line
+                            NSParagraphStyleAttributeName:style};
     
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] init];
-    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:[IcoMoon iconString:k12_ADD_NOTE] attributes:dict2]];
-    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:@" Add Note" attributes:dict1]];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:[IcoMoon iconString:k12_ADD_NOTE] attributes:fontStyle2]];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:@" Add Note" attributes:fontStyle1]];
     
     [_addNewBtn setAttributedTitle:attString forState:UIControlStateNormal];
     [[_addNewBtn titleLabel] setNumberOfLines:0];
@@ -103,8 +104,8 @@
     [_addNewBtn setTintColor:[UIColor darkGrayColor]];
     
     attString = [[NSMutableAttributedString alloc] init];
-    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:[IcoMoon iconString:k12_NOTEBOOK] attributes:dict2]];
-    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:@" All Notes" attributes:dict1]];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:[IcoMoon iconString:k12_NOTEBOOK] attributes:fontStyle2]];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:@" All Notes" attributes:fontStyle1]];
     [_allNotesBtn setAttributedTitle:attString forState:UIControlStateNormal];
     [[_allNotesBtn titleLabel] setNumberOfLines:0];
     _allNotesBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
