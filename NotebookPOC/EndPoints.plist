@@ -4,8 +4,10 @@
 <dict>
 	<key>get_notebook_list</key>
 	<string>/books/%@/pages/%@/users/%@/notes</string>
-	<key>notbook_sav</key>
+	<key>notebook_save</key>
 	<string>/books/%@/pages/%@/users/%@/notes/%@/save</string>
+	<key>notebook_create</key>
+	<string>/books/%@/pages/%@/users/%@/notes/create</string>
 	<key>PRODUCTION</key>
 	<dict>
 		<key>notebook</key>

@@ -273,6 +273,7 @@
     [newNote setObject:@"n" forKey:@"contentType"];
     [newNote setObject:dateStr forKey:@"created"];
     [newNote setObject:@(YES) forKey:EDIT_OPEN];
+    [newNote setObject:@(YES) forKey:@"newNote"];
     
     [self.dataSource insertObject:newNote atIndex:0];
     
@@ -284,7 +285,7 @@
     [self.tableView beginUpdates];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     [self.tableView endUpdates];
-    //save new blank note
+    
 }
 
 #pragma mark - Table view delegate

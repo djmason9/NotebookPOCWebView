@@ -154,11 +154,20 @@ enum EditType{
     Etext2CustomUIWebView *textView = (Etext2CustomUIWebView*)[self viewWithTag:TEXT_BOX];
     NSString *bodyText = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
 
-    NSString *jsonString = [NSString stringWithFormat:@"{\"content\":\"%@\",\"autoSave\":true}",bodyText];
-//    NSString *jsonString = [NSString stringWithFormat:@"{\"content\":\"%@\",\"contentType\":\"n\"}",bodyText];
-    
-    NSString *noteBookSave = [Etext2WebClient getEndpointURLForKey:@"notbook_sav"];
-    NSString *apiURL = [noteBookAPI stringByAppendingString:[NSString stringWithFormat:noteBookSave,BOOK_ID,PAGE_ID,USER_ID,self.noteId]];
+    NSString *jsonString;
+    NSString *noteBookServiceUrl;
+    NSString *apiURL;
+    if(!self.noteId){
+        jsonString = [NSString stringWithFormat:@"{\"content\":\"%@\",\"contentType\":\"n\"}",bodyText]; //new note
+        noteBookServiceUrl = [Etext2WebClient getEndpointURLForKey:@"notebook_create"];
+        
+        apiURL = [noteBookAPI stringByAppendingString:[NSString stringWithFormat:noteBookServiceUrl,BOOK_ID,PAGE_ID,USER_ID]];
+    }else{
+        jsonString = [NSString stringWithFormat:@"{\"content\":\"%@\",\"autoSave\":true}",bodyText]; //existing note
+        noteBookServiceUrl = [Etext2WebClient getEndpointURLForKey:@"notebook_save"];
+        
+        apiURL = [noteBookAPI stringByAppendingString:[NSString stringWithFormat:noteBookServiceUrl,BOOK_ID,PAGE_ID,USER_ID,self.noteId]];
+    }
 
     //save to server
     [Etext2NoteBookServiceManager saveNote:apiURL bodyText:jsonString withHandler:^(NSString *successMsg, NSError *error) {
