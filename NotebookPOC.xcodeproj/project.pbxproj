@@ -47,7 +47,7 @@
 		BC5EC4F31BE015CE00F13089 /* Etext2CustomUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Etext2CustomUIWebView.m; sourceTree = "<group>"; };
 		BC8CD4CF1BD8588E0026E538 /* Etext2Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Etext2Utility.h; sourceTree = "<group>"; };
 		BC8CD4D01BD8588E0026E538 /* Etext2Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Etext2Utility.m; sourceTree = "<group>"; };
-		BC96B4941BD7FDA000032F5E /* NotebookPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotebookPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC96B4941BD7FDA000032F5E /* Notes POC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notes POC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC96B4981BD7FDA000032F5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC96B4991BD7FDA000032F5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC96B49B1BD7FDA000032F5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		BC96B4951BD7FDA000032F5E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC96B4941BD7FDA000032F5E /* NotebookPOC.app */,
+				BC96B4941BD7FDA000032F5E /* Notes POC.app */,
 				BC96B4AD1BD7FDA000032F5E /* NotebookPOCTests.xctest */,
 			);
 			name = Products;
@@ -247,7 +247,7 @@
 			);
 			name = NotebookPOC;
 			productName = NotebookPOC;
-			productReference = BC96B4941BD7FDA000032F5E /* NotebookPOC.app */;
+			productReference = BC96B4941BD7FDA000032F5E /* Notes POC.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BC96B4AC1BD7FDA000032F5E /* NotebookPOCTests */ = {
@@ -477,7 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NotebookPOC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Notes POC";
 			};
 			name = Debug;
 		};
@@ -487,7 +487,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NotebookPOC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Notes POC";
 			};
 			name = Release;
 		};

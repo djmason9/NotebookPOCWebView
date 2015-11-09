@@ -18,6 +18,8 @@
 #define ENABLED_COLOR [UIColor colorWithRed:0.26 green:0.26 blue:0.26 alpha:1.0]
 
 
+#define TOTAL_WORD_COUNT 1000
+
 
 @protocol Etext2NoteBookCellDelegate <NSObject>
 

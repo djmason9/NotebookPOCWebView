@@ -11,8 +11,8 @@
 
 
 
-
 @interface Etext2NoteBookViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource,Etext2NoteBookCellDelegate>
 
+-(void)scrollToNote:(NSString*)noteId;
 
 @end

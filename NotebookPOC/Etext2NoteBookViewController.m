@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UIView *editView;
 @property (nonatomic, strong) NSDateFormatter *mdyDateFormatter;
+@property (nonatomic,strong)NSString *noteIdOpened;
 
 
 @end
@@ -45,7 +46,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -100,7 +101,7 @@
     [[_addNewBtn titleLabel] setNumberOfLines:0];
     _addNewBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _addNewBtn.layer.borderWidth = 1;
-    [_addNewBtn setBackgroundColor:[UIColor whiteColor]];
+    [_addNewBtn setBackgroundColor:[UIColor clearColor]];
     [_addNewBtn setTintColor:[UIColor darkGrayColor]];
     
     attString = [[NSMutableAttributedString alloc] init];
@@ -110,7 +111,7 @@
     [[_allNotesBtn titleLabel] setNumberOfLines:0];
     _allNotesBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _allNotesBtn.layer.borderWidth = 1;
-    [_allNotesBtn setBackgroundColor:[UIColor whiteColor]];
+    [_allNotesBtn setBackgroundColor:[UIColor clearColor]];
     [_allNotesBtn setTintColor:[UIColor darkGrayColor]];
 
 
@@ -169,11 +170,18 @@
     [label setTextColor:[UIColor whiteColor]];
     [label setFont:[UIFont fontWithName:APPLICATION_BOLD_FONT size:16]];
     
+    UILabel *noteCount = [[UILabel alloc] initWithFrame:CGRectMake((tableView.frame.size.width - 215.0), 0, 200, 42)];
+    [noteCount setTextColor:[UIColor whiteColor]];
+    [noteCount setTextAlignment:NSTextAlignmentRight];
+    [noteCount setFont:[UIFont fontWithName:APPLICATION_STANDARD_FONT size:16]];
+    
     //sort the map keys then grabs the key based on section
     NSString *string = @"TOC Page Name";
     
     [label setText:string];
+    [noteCount setText:[NSString stringWithFormat:@"%ld Notes", _dataSource.count ]];
     [view addSubview:label];
+     [view addSubview:noteCount];
     
     [view setBackgroundColor:HIGHLIGHT_COLOR];
     
@@ -220,11 +228,11 @@
         Etext2CustomUIWebView *textView = ((Etext2CustomUIWebView*)[cell viewWithTag:TEXT_BOX]);
         //reset any selected buttons
         [self resetButtons:cell];
-        NSAttributedString *attributedContent = [Etext2Utility stringByStrippingHTML:[Etext2Utility formatHTMLString:contentString]]; //needed for count
+        
         [textView loadHTMLStringForEdit:contentString];
         
         //get letter count
-        ((UILabel*)[cell viewWithTag:WORD_COUNT]).text = [NSString stringWithFormat:@"%ld", (long)attributedContent.string.length];
+//        ((UILabel*)[cell viewWithTag:WORD_COUNT]).text = [NSString stringWithFormat:@"%d", TOTAL_WORD_COUNT - [[textView stringByEvaluatingJavaScriptFromString:@"getWordCount()"] intValue]];
         
     }else{
         editViewBox.hidden = YES;
@@ -280,6 +288,24 @@
     
     return 75; //accomedates one line and a date
 }
+#pragma mark - public methods
+-(void)scrollToNote:(NSString*)noteId{
+
+    _noteIdOpened= noteId;
+    
+    if(_dataSource.count>0){
+        NSIndexPath *rowPath;
+        NSInteger row=0;
+        for(NSDictionary *rowDict in _dataSource){
+            if([noteId isEqualToString:rowDict[@"objectId"]]){
+                rowPath = [NSIndexPath indexPathForRow:row inSection:0];
+                row++;
+            }
+        }
+        
+        [_tableView scrollToRowAtIndexPath:rowPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
 
 #pragma mark - private methods
 -(void)resetButtons:(UITableViewCell*)cell{
@@ -288,6 +314,7 @@
         [((Etext2CustomEditUIButton*)[cell viewWithTag:i]) setUpButtonUnSelectedStyle];
     
 }
+
 - (IBAction)allNotes:(id)sender {
     
 }

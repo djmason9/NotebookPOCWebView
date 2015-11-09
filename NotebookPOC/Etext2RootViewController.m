@@ -24,11 +24,6 @@
     // Do any additional setup after loading the view, typically from a nib.
 
 }
-- (IBAction)showNotesList:(id)sender {
-    Etext2NoteBookViewController *noteController = (Etext2NoteBookViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"notebook_view_controller"];
-    
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

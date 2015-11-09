@@ -117,9 +117,12 @@ enum EditType{
 }
 
 #pragma mark - webviewdelegate
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    ((UILabel*)[self viewWithTag:WORD_COUNT]).text = [NSString stringWithFormat:@"%d", TOTAL_WORD_COUNT - [[webView stringByEvaluatingJavaScriptFromString:@"getWordCount()"] intValue]];
+}
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *requestURLString = [request.URL absoluteString];
-    Etext2CustomUIWebView *textView = (Etext2CustomUIWebView*)[self viewWithTag:TEXT_BOX];
     
     // If it's a pxeframe scheme used for getting messages from WEB JS, then just
     if ([requestURLString rangeOfString:@"etext2webEdit"].location != NSNotFound) //key press
@@ -135,13 +138,15 @@ enum EditType{
                                        selector:@selector(autoSave:)
                                        userInfo:nil
                                         repeats:NO];
-        
+
 
     }else if ([requestURLString rangeOfString:@"etext2webFocus"].location != NSNotFound) {//focus
         //take a snap shot of the box for undo
-        _beginingBodyText = [textView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-//        NSLog(@"%@",_beginingBodyText);
+        _beginingBodyText = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
     }
+    
+    //get letter count
+    ((UILabel*)[self viewWithTag:WORD_COUNT]).text = [NSString stringWithFormat:@"%d", TOTAL_WORD_COUNT - [[webView stringByEvaluatingJavaScriptFromString:@"getWordCount()"] intValue]];
     
     return YES;
 }
@@ -217,9 +222,10 @@ enum EditType{
     UIView *buttonBase = ((UIView*)[self viewWithTag:BUTTON_BASE]);
     [self setViewGradient:buttonBase];
 
-    // BUTTONS
+//    // BUTTONS
     UIButton *done = ((UIButton*)[self viewWithTag:DONE]);
-    done.layer.backgroundColor = [UIColor blackColor].CGColor;
+    done.layer.borderWidth = 1;
+    done.layer.borderColor = [UIColor lightGrayColor].CGColor;
 
 }
 

@@ -10,3 +10,10 @@ $(function(){//on load
   
 });
 
+
+function getWordCount(){
+    var html = document.body.innerHTML;
+    
+    return $(html).text().length;
+}
+

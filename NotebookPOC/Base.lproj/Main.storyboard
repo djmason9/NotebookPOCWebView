@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="FontAwesome.ttf">
+        <mutableArray key="FontAwesome_OLD.ttf">
             <string>FontAwesome</string>
         </mutableArray>
         <mutableArray key="k12_universal_icons.ttf">
@@ -31,18 +31,9 @@
                                     <constraint firstAttribute="width" constant="350" id="iiu-KL-9er"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="2rR-xm-17c" kind="embed" id="MTy-Ly-OXK"/>
+                                    <segue destination="2rR-xm-17c" kind="embed" id="ve3-oy-XH5"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75v-HM-7b8">
-                                <rect key="frame" x="94" y="133" width="69" height="30"/>
-                                <state key="normal" title="NoteBook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showNotesList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8l-JP-NcJ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -61,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1343" y="435"/>
+            <point key="canvasLocation" x="-1487" y="435"/>
         </scene>
         <!--Etext2 Note Book View Controller-->
         <scene sceneID="ScV-PR-jQn">
@@ -218,10 +209,10 @@
                                                         </view>
                                                         <button opaque="NO" tag="11" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZF-YG-NPY">
                                                             <rect key="frame" x="289" y="128" width="56" height="30"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                             <state key="normal" title="Done">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
@@ -310,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2b-C0-ziy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-809" y="435"/>
+            <point key="canvasLocation" x="-647" y="412"/>
         </scene>
     </scenes>
 </document>
