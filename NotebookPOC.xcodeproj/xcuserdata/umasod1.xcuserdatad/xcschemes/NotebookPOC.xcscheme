@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC96B4931BD7FDA000032F5E"
-               BuildableName = "NotebookPOC.app"
+               BuildableName = "Notes POC.app"
                BlueprintName = "NotebookPOC"
                ReferencedContainer = "container:NotebookPOC.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC96B4931BD7FDA000032F5E"
-            BuildableName = "NotebookPOC.app"
+            BuildableName = "Notes POC.app"
             BlueprintName = "NotebookPOC"
             ReferencedContainer = "container:NotebookPOC.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC96B4931BD7FDA000032F5E"
-            BuildableName = "NotebookPOC.app"
+            BuildableName = "Notes POC.app"
             BlueprintName = "NotebookPOC"
             ReferencedContainer = "container:NotebookPOC.xcodeproj">
          </BuildableReference>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC96B4931BD7FDA000032F5E"
-            BuildableName = "NotebookPOC.app"
+            BuildableName = "Notes POC.app"
             BlueprintName = "NotebookPOC"
             ReferencedContainer = "container:NotebookPOC.xcodeproj">
          </BuildableReference>

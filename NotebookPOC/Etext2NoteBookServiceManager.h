@@ -22,8 +22,16 @@
 
 @interface Etext2NoteBookServiceManager : NSObject
 
-+(void)saveNote:(NSString*)apiURL bodyText:(NSString*)jsonString withHandler:(void (^)(NSString*, NSError*))handler;
++(void)getPagesForBook:(NSString*)apiURL withHandler:(void (^)(NSArray*, NSError*))handler;
++(void)getPagesForBook:(NSString*)apiURL bodyText:(NSString*)jsonString withHandler:(void (^)(NSString*, NSError*))handler;
+
++(void)getBookIdByAppId:(NSString*)apiURL bodyText:(NSString*)jsonString withHandler:(void (^)(NSString*, NSError*))handler;
++(void)saveNote:(NSString*)apiURL bodyText:(NSString*)jsonString withHandler:(void (^)(NSDictionary*, NSError*))handler;
 +(void)getNotes:(NSString*)apiURL withHandler:(void (^)(NSArray*, NSError*))handler;
-+(void)deleteNote:(NSString*)apiURL withHandler:(void (^)(NSArray*, NSError*))handler;
++(void)deleteNote:(NSString*)apiURL withHandler:(void (^)(NSString*, NSError*))handler;
+
++(void)getAllNotes:(NSString*)apiURL bodyText:(NSString*)jsonString withHandler:(void (^)(NSDictionary*,NSError*))handler;
+
++(void)getAllNotesPrompts:(NSString*)apiURL withHandler:(void (^)(NSDictionary*,NSError*))handler;
 
 @end

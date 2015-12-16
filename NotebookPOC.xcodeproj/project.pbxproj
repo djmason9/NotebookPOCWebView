@@ -15,7 +15,6 @@
 		BC96B4A31BD7FDA000032F5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC96B4A11BD7FDA000032F5E /* Main.storyboard */; };
 		BC96B4A51BD7FDA000032F5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC96B4A41BD7FDA000032F5E /* Images.xcassets */; };
 		BC96B4A81BD7FDA000032F5E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC96B4A61BD7FDA000032F5E /* LaunchScreen.xib */; };
-		BC96B4B41BD7FDA000032F5E /* NotebookPOCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC96B4B31BD7FDA000032F5E /* NotebookPOCTests.m */; };
 		BC96B4C01BD7FDEB00032F5E /* EndPoints.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC96B4BF1BD7FDEB00032F5E /* EndPoints.plist */; };
 		BC96B4C31BD800D500032F5E /* Etext2NoteBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC96B4C21BD800D500032F5E /* Etext2NoteBookViewController.m */; };
 		BC96B4C91BD8092B00032F5E /* Etext2WebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BC96B4C81BD8092B00032F5E /* Etext2WebClient.m */; };
@@ -25,21 +24,12 @@
 		BC97BD2D1BDA9D2B00879EBA /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97BD281BDA9D2B00879EBA /* NSString+FontAwesome.m */; };
 		BC97BD2E1BDA9D2B00879EBA /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97BD2A1BDA9D2B00879EBA /* UIFont+FontAwesome.m */; };
 		BC97BD311BDAA07500879EBA /* Etext2NoteBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97BD301BDAA07500879EBA /* Etext2NoteBookTableViewCell.m */; };
+		BCB429041C1F347F003D8A75 /* Etext2AllNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB429031C1F347F003D8A75 /* Etext2AllNotesViewController.m */; };
 		BCBCD3E91BEA60E500643986 /* www in Resources */ = {isa = PBXBuildFile; fileRef = BC22A62F1BE8033900FCE68E /* www */; };
 		BCBCD3EC1BEBAD6800643986 /* Etext2NoteBookServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBCD3EB1BEBAD6800643986 /* Etext2NoteBookServiceManager.m */; };
 		BCDE648D1BDAEF0600567779 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC97BD331BDAAB4600879EBA /* FontAwesome.ttf */; };
 		BCE3F1651BE14957007B5BE2 /* Etext2CustomEditUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3F1641BE14957007B5BE2 /* Etext2CustomEditUIButton.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BC96B4AE1BD7FDA000032F5E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC96B48C1BD7FDA000032F5E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BC96B4931BD7FDA000032F5E;
-			remoteInfo = NotebookPOC;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BC22A62F1BE8033900FCE68E /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
@@ -57,7 +47,6 @@
 		BC96B4A21BD7FDA000032F5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC96B4A41BD7FDA000032F5E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BC96B4A71BD7FDA000032F5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		BC96B4AD1BD7FDA000032F5E /* NotebookPOCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotebookPOCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC96B4B21BD7FDA000032F5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC96B4B31BD7FDA000032F5E /* NotebookPOCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotebookPOCTests.m; sourceTree = "<group>"; };
 		BC96B4BF1BD7FDEB00032F5E /* EndPoints.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EndPoints.plist; sourceTree = "<group>"; };
@@ -79,6 +68,8 @@
 		BC97BD2F1BDAA07500879EBA /* Etext2NoteBookTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Etext2NoteBookTableViewCell.h; sourceTree = "<group>"; };
 		BC97BD301BDAA07500879EBA /* Etext2NoteBookTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Etext2NoteBookTableViewCell.m; sourceTree = "<group>"; };
 		BC97BD331BDAAB4600879EBA /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		BCB429021C1F347F003D8A75 /* Etext2AllNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Etext2AllNotesViewController.h; sourceTree = "<group>"; };
+		BCB429031C1F347F003D8A75 /* Etext2AllNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Etext2AllNotesViewController.m; sourceTree = "<group>"; };
 		BCBCD3EA1BEBAD6800643986 /* Etext2NoteBookServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Etext2NoteBookServiceManager.h; sourceTree = "<group>"; };
 		BCBCD3EB1BEBAD6800643986 /* Etext2NoteBookServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Etext2NoteBookServiceManager.m; sourceTree = "<group>"; };
 		BCE3F1631BE14957007B5BE2 /* Etext2CustomEditUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Etext2CustomEditUIButton.h; sourceTree = "<group>"; };
@@ -87,13 +78,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		BC96B4911BD7FDA000032F5E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BC96B4AA1BD7FDA000032F5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				BC96B4941BD7FDA000032F5E /* Notes POC.app */,
-				BC96B4AD1BD7FDA000032F5E /* NotebookPOCTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +129,8 @@
 				BC5EC4F11BE0159E00F13089 /* CustomElement */,
 				BC96B4C11BD800D500032F5E /* Etext2NoteBookViewController.h */,
 				BC96B4C21BD800D500032F5E /* Etext2NoteBookViewController.m */,
+				BCB429021C1F347F003D8A75 /* Etext2AllNotesViewController.h */,
+				BCB429031C1F347F003D8A75 /* Etext2AllNotesViewController.m */,
 				BC96B49E1BD7FDA000032F5E /* Etext2RootViewController.h */,
 				BC96B49F1BD7FDA000032F5E /* Etext2RootViewController.m */,
 				BCBCD3EA1BEBAD6800643986 /* Etext2NoteBookServiceManager.h */,
@@ -250,24 +235,6 @@
 			productReference = BC96B4941BD7FDA000032F5E /* Notes POC.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BC96B4AC1BD7FDA000032F5E /* NotebookPOCTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BC96B4BA1BD7FDA000032F5E /* Build configuration list for PBXNativeTarget "NotebookPOCTests" */;
-			buildPhases = (
-				BC96B4A91BD7FDA000032F5E /* Sources */,
-				BC96B4AA1BD7FDA000032F5E /* Frameworks */,
-				BC96B4AB1BD7FDA000032F5E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BC96B4AF1BD7FDA000032F5E /* PBXTargetDependency */,
-			);
-			name = NotebookPOCTests;
-			productName = NotebookPOCTests;
-			productReference = BC96B4AD1BD7FDA000032F5E /* NotebookPOCTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -279,10 +246,6 @@
 				TargetAttributes = {
 					BC96B4931BD7FDA000032F5E = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					BC96B4AC1BD7FDA000032F5E = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = BC96B4931BD7FDA000032F5E;
 					};
 				};
 			};
@@ -300,7 +263,6 @@
 			projectRoot = "";
 			targets = (
 				BC96B4931BD7FDA000032F5E /* NotebookPOC */,
-				BC96B4AC1BD7FDA000032F5E /* NotebookPOCTests */,
 			);
 		};
 /* End PBXProject section */
@@ -320,13 +282,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC96B4AB1BD7FDA000032F5E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -335,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC97BD2D1BDA9D2B00879EBA /* NSString+FontAwesome.m in Sources */,
+				BCB429041C1F347F003D8A75 /* Etext2AllNotesViewController.m in Sources */,
 				BC97BD2B1BDA9D2B00879EBA /* FAImageView.m in Sources */,
 				BCE3F1651BE14957007B5BE2 /* Etext2CustomEditUIButton.m in Sources */,
 				BC96B4A01BD7FDA000032F5E /* Etext2RootViewController.m in Sources */,
@@ -351,23 +307,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC96B4A91BD7FDA000032F5E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BC96B4B41BD7FDA000032F5E /* NotebookPOCTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BC96B4AF1BD7FDA000032F5E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BC96B4931BD7FDA000032F5E /* NotebookPOC */;
-			targetProxy = BC96B4AE1BD7FDA000032F5E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BC96B4A11BD7FDA000032F5E /* Main.storyboard */ = {
@@ -491,40 +431,6 @@
 			};
 			name = Release;
 		};
-		BC96B4BB1BD7FDA000032F5E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = NotebookPOCTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NotebookPOC.app/NotebookPOC";
-			};
-			name = Debug;
-		};
-		BC96B4BC1BD7FDA000032F5E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = NotebookPOCTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NotebookPOC.app/NotebookPOC";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -542,15 +448,6 @@
 			buildConfigurations = (
 				BC96B4B81BD7FDA000032F5E /* Debug */,
 				BC96B4B91BD7FDA000032F5E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BC96B4BA1BD7FDA000032F5E /* Build configuration list for PBXNativeTarget "NotebookPOCTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BC96B4BB1BD7FDA000032F5E /* Debug */,
-				BC96B4BC1BD7FDA000032F5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

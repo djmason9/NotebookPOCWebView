@@ -20,6 +20,24 @@
 
 #define TOTAL_WORD_COUNT 1000
 
+#define ETEXT_NOTEBOOK_CHILDREN @"children"
+#define ETEXT_NOTEBOOK_PAGE_NUMBER @"pageNumber"
+#define ETEXT_NOTEBOOK_NOTES @"notes"
+#define ETEXT_NOTEBOOK_PAGE_TITLE @"pageTitle"
+#define ETEXT_NOTEBOOK_PAGE_URL @"pageUrl"
+#define ETEXT_NOTEBOOK_PAGE_CAP_URL @"pageURL"
+#define ETEXT_NOTEBOOK_USER_ID @"userId"
+#define ETEXT_NOTEBOOK_BOOK_CONTEXT @"bookContext"
+#define ETEXT_NOTEBOOK_BOOK_ID @"bookId"
+#define ETEXT_NOTEBOOK_PAGE_ID @"pageId"
+#define ETEXT_NOTEBOOK_PROMPTS @"prompts"
+#define ETEXT_NOTEBOOK_PROMPT_ID @"id"
+#define ETEXT_NOTEBOOK_PARENT_ID @"parentId"
+#define ETEXT_NOTEBOOK_QUESTION @"question"
+#define ETEXT_NOTEBOOK_CONTENT @"content"
+#define ETEXT_NOTEBOOK_NOTE_ID @"objectId"
+#define ETEXT_NOTEBOOK_TRIGGERED_NOTE @"triggeredPromptIndex"
+
 
 @protocol Etext2NoteBookCellDelegate <NSObject>
 

@@ -29,6 +29,7 @@
 #define BUTTON_BASE 99
 #define TEXT_BOX 89
 #define DATE 300
+#define TOC_LABEL 88
 
 #define STANDARD_BUTTON_FONT [UIFont fontWithName:kFontAwesomeFamilyName size:14]
 #define  TOP_COLOR  [UIColor colorWithRed:0.992 green:0.992 blue:0.992 alpha:1]

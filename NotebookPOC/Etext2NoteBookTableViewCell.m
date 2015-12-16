@@ -15,6 +15,7 @@
 #import "Etext2NoteBookServiceManager.h"
 
 
+
 enum EditType{
     Bold,
     Italic,
@@ -199,27 +200,26 @@ enum EditType{
     }
     
     //save to server
-    [Etext2NoteBookServiceManager saveNote:apiURL bodyText:jsonString withHandler:^(NSString *successMsg, NSError *error) {
-        if(!error){
-            NSLog(@"SAVED %@",successMsg);
-        }else{
-            NSLog(@"FAIL");
-        }
-        //push save label
-    }];
     
 }
 
 #pragma mark - Private Methods
 
 -(void)hydrateCell{
-    ((UIView*)[self viewWithTag:EDIT_BOX]).hidden = YES;
+    
+    UIView *editText =((UIView*)[self viewWithTag:EDIT_BOX]);
+    editText.hidden = YES;
     
     UIView *editBox =((UIView*)[self viewWithTag:EDIT_BOX_INNER]);
+
     editBox.layer.borderColor = [UIColor colorWithRed:0.682 green:0.682 blue:0.682 alpha:1].CGColor; /*#aeaeae*/
     editBox.layer.borderWidth = 1.0;
     
     UIView *buttonBase = ((UIView*)[self viewWithTag:BUTTON_BASE]);
+    buttonBase.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    CGRect newFrame = CGRectMake(0, 75, 950, 40);
+    buttonBase.frame = newFrame;
+    
     [self setViewGradient:buttonBase];
 
 //    // BUTTONS

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4068625E1917E7787CB4E38CF4C2D8AE093CE711",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4068625E1917E7787CB4E38CF4C2D8AE093CE711" : 0,
+    "1139FA676C9A453957B13C58CFD22A417561F5C5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FA68D9B3-A4DC-48AA-8F87-A84D072A0156",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4068625E1917E7787CB4E38CF4C2D8AE093CE711" : "NotebookPOCWebView",
+    "1139FA676C9A453957B13C58CFD22A417561F5C5" : "NotebookPOC"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NotebookPOC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NotebookPOC.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/djmason9\/notebookPOC.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1139FA676C9A453957B13C58CFD22A417561F5C5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/djmason9\/NotebookPOCWebView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4068625E1917E7787CB4E38CF4C2D8AE093CE711"
+    }
+  ]
+}
