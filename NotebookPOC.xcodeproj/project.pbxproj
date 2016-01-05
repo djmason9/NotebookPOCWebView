@@ -60,7 +60,6 @@
 		BC97BD1F1BDA9A8800879EBA /* k12UniversalIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = k12UniversalIcons.h; sourceTree = "<group>"; };
 		BC97BD241BDA9D2B00879EBA /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
 		BC97BD251BDA9D2B00879EBA /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
-		BC97BD261BDA9D2B00879EBA /* FontAwesome_OLD.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome_OLD.ttf; sourceTree = "<group>"; };
 		BC97BD271BDA9D2B00879EBA /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
 		BC97BD281BDA9D2B00879EBA /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		BC97BD291BDA9D2B00879EBA /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
@@ -189,7 +188,6 @@
 			children = (
 				BC97BD241BDA9D2B00879EBA /* FAImageView.h */,
 				BC97BD251BDA9D2B00879EBA /* FAImageView.m */,
-				BC97BD261BDA9D2B00879EBA /* FontAwesome_OLD.ttf */,
 				BC97BD331BDAAB4600879EBA /* FontAwesome.ttf */,
 				BC97BD271BDA9D2B00879EBA /* NSString+FontAwesome.h */,
 				BC97BD281BDA9D2B00879EBA /* NSString+FontAwesome.m */,

@@ -18,6 +18,8 @@
 #define PAGE_ID @"6cd7611c-1e8b-4959-843c-78ebb844abc7"
 #define USER_ID @"demoUser"
 
+#define AUTH_TOKEN @"Bearer jPPnPE2bEYnZ40AHDB4ajtSquQDV"
+
 
 
 @interface Etext2NoteBookServiceManager : NSObject

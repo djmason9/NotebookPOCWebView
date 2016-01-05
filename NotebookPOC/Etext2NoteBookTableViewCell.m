@@ -13,6 +13,7 @@
 #import "Etext2CustomEditUIButton.h"
 #import "Etext2CustomUIWebView.h"
 #import "Etext2NoteBookServiceManager.h"
+#import "k12UniversalIcons.h"
 
 
 
@@ -206,6 +207,12 @@ enum EditType{
 #pragma mark - Private Methods
 
 -(void)hydrateCell{
+
+    UIButton *deleteNote =((UIButton*)[self viewWithTag:NOTE_DELETE]);
+    [deleteNote.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:18]];
+    [deleteNote setTitle:[NSString fontAwesomeIconStringForEnum:FATrashO] forState:UIControlStateNormal];
+    [deleteNote setTintColor:[UIColor lightGrayColor]];
+    [deleteNote addTarget:self action:@selector(deleteNote:) forControlEvents:UIControlEventTouchUpInside];
     
     UIView *editText =((UIView*)[self viewWithTag:EDIT_BOX]);
     editText.hidden = YES;
@@ -261,6 +268,11 @@ enum EditType{
     //Add gradient to view
     [currentView.layer insertSublayer:theViewGradient atIndex:0];
     
+}
+
+-(void) deleteNote:(id)sender{
+    //do some delete action here
+    NSLog(@"DELETE NOTE.");
 }
 
 @end

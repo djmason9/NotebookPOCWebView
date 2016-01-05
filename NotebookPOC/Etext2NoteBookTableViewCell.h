@@ -24,6 +24,7 @@
 #define ETEXT_NOTEBOOK_PAGE_NUMBER @"pageNumber"
 #define ETEXT_NOTEBOOK_NOTES @"notes"
 #define ETEXT_NOTEBOOK_PAGE_TITLE @"pageTitle"
+#define ETEXT_NOTEBOOK_UNIT_TITLE @"unitTitle"
 #define ETEXT_NOTEBOOK_PAGE_URL @"pageUrl"
 #define ETEXT_NOTEBOOK_PAGE_CAP_URL @"pageURL"
 #define ETEXT_NOTEBOOK_USER_ID @"userId"

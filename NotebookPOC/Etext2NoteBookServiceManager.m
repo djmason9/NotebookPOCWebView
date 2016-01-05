@@ -17,7 +17,7 @@
     
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURL]];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
+    [request setValue:AUTH_TOKEN forHTTPHeaderField:@"Authorization"];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         if(!connectionError){
@@ -42,6 +42,7 @@
     NSData *postdata = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURL]];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:AUTH_TOKEN forHTTPHeaderField:@"Authorization"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postdata];
     
@@ -69,6 +70,7 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postdata];
+    [request setValue:AUTH_TOKEN forHTTPHeaderField:@"Authorization"];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
@@ -94,6 +96,8 @@
     NSData *postdata = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURL]];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:AUTH_TOKEN forHTTPHeaderField:@"Authorization"];
+    
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postdata];
     
@@ -119,6 +123,7 @@
     
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURL]];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:AUTH_TOKEN forHTTPHeaderField:@"Authorization"];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
@@ -161,6 +166,7 @@
     
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURL]];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:AUTH_TOKEN forHTTPHeaderField:@"Authorization"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postdata];
     
@@ -184,7 +190,7 @@
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURL]];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"notebook" forHTTPHeaderField:@"application-id"];
-
+    [request setValue:AUTH_TOKEN forHTTPHeaderField:@"Authorization"];
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -206,6 +212,8 @@
     
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURL]];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:AUTH_TOKEN forHTTPHeaderField:@"Authorization"];
+    
     [request setHTTPMethod:@"DELETE"];
     
     
