@@ -71,7 +71,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iz3-Ru-4rV" userLabel="dark banner">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iz3-Ru-4rV" userLabel="dark banner">
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="43"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Q9-sW-5Lo">
@@ -412,16 +412,21 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mMa-qw-svD">
-                                        <rect key="frame" x="311" y="40" width="15" height="15"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mMa-qw-svD">
+                                        <rect key="frame" x="312" y="40" width="15" height="15"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="15" id="UKM-S6-d2V"/>
+                                            <constraint firstAttribute="height" constant="15" id="owd-di-ePZ"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="tid-zH-MSP" firstAttribute="leading" secondItem="zLQ-ph-s4r" secondAttribute="leading" constant="16" id="3sI-Ie-aTM"/>
+                                    <constraint firstItem="mMa-qw-svD" firstAttribute="top" secondItem="zLQ-ph-s4r" secondAttribute="top" constant="40" id="7mK-Dw-kWY"/>
                                     <constraint firstAttribute="trailing" secondItem="2fX-vI-DHD" secondAttribute="trailing" constant="15" id="HXn-Lg-bRF"/>
                                     <constraint firstItem="2fX-vI-DHD" firstAttribute="top" secondItem="zLQ-ph-s4r" secondAttribute="top" constant="13" id="NJV-ff-R4R"/>
                                     <constraint firstAttribute="height" constant="45" id="PmA-hR-PwA"/>
@@ -432,54 +437,74 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gv2-tV-VoE">
                                 <rect key="frame" x="0.0" y="87" width="350" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exx-gY-ztK">
-                                        <rect key="frame" x="173" y="14" width="20" height="20"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kdz-pA-boq">
+                                        <rect key="frame" x="153" y="8" width="68" height="36"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exx-gY-ztK">
+                                                <rect key="frame" x="1" y="6" width="20" height="20"/>
+                                                <animations/>
+                                                <state key="normal" backgroundImage="Checkbox_Active"/>
+                                                <connections>
+                                                    <action selector="setFilter:" destination="Mlo-a5-8Br" eventType="touchUpInside" id="cG3-Pd-ccJ"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri7-ei-c4G">
+                                                <rect key="frame" x="27" y="7" width="35" height="21"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <animations/>
-                                        <state key="normal" backgroundImage="Checkbox_Active"/>
-                                        <connections>
-                                            <action selector="setFilter:" destination="Mlo-a5-8Br" eventType="touchUpInside" id="cG3-Pd-ccJ"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri7-ei-c4G">
-                                        <rect key="frame" x="202" y="15" width="35" height="21"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="68" id="oNG-Ug-szo"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ocf-Mq-8IY">
+                                        <rect key="frame" x="221" y="0.0" width="135" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLi-hQ-To6">
+                                                <rect key="frame" x="6" y="14" width="20" height="20"/>
+                                                <animations/>
+                                                <state key="normal" backgroundImage="Checkbox_Active"/>
+                                                <connections>
+                                                    <action selector="setFilter:" destination="Mlo-a5-8Br" eventType="touchUpInside" id="Lk4-2c-Io2"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Unit Assignments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBs-9u-1RS">
+                                                <rect key="frame" x="33" y="14" width="100" height="21"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLi-hQ-To6">
-                                        <rect key="frame" x="241" y="14" width="20" height="20"/>
-                                        <animations/>
-                                        <state key="normal" backgroundImage="Checkbox_Active"/>
-                                        <connections>
-                                            <action selector="setFilter:" destination="Mlo-a5-8Br" eventType="touchUpInside" id="Lk4-2c-Io2"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Unit Assi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBs-9u-1RS">
-                                        <rect key="frame" x="269" y="14" width="73" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nB-Mm-uS2">
-                                        <rect key="frame" x="53" y="10" width="102" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="N7B-Vw-5UI"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nB-Mm-uS2">
+                                        <rect key="frame" x="8" y="10" width="96" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                         <state key="normal" title="Clear filters">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clearFilter:" destination="Mlo-a5-8Br" eventType="touchUpInside" id="Ks2-oE-oPA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="fBs-9u-1RS" secondAttribute="trailing" constant="8" id="BI3-QM-0af"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ri7-ei-c4G" secondAttribute="trailing" constant="113" id="DuM-nM-8eI"/>
-                                    <constraint firstItem="Ri7-ei-c4G" firstAttribute="leading" secondItem="exx-gY-ztK" secondAttribute="trailing" constant="9" id="WtH-3c-Riw"/>
+                                    <constraint firstItem="Ocf-Mq-8IY" firstAttribute="leading" secondItem="Kdz-pA-boq" secondAttribute="trailing" id="0NT-Ev-yoY"/>
                                     <constraint firstAttribute="height" constant="44" id="Y8G-54-sMX"/>
-                                    <constraint firstItem="1nB-Mm-uS2" firstAttribute="centerX" secondItem="gv2-tV-VoE" secondAttribute="centerX" id="aDS-bd-6Pv"/>
-                                    <constraint firstItem="fBs-9u-1RS" firstAttribute="leading" secondItem="HLi-hQ-To6" secondAttribute="trailing" constant="8" id="uoO-y3-U76"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ocf-Mq-8IY" secondAttribute="trailing" id="ZQa-Ku-w0G"/>
                                 </constraints>
                             </view>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="223" sectionHeaderHeight="47" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LL2-Kl-NsH">
@@ -745,6 +770,8 @@
                         <outlet property="arrowDown" destination="mMa-qw-svD" id="5sO-UR-77G"/>
                         <outlet property="backButton" destination="94c-P0-9UD" id="qSy-B2-OmB"/>
                         <outlet property="closeButtonTrailingConstraint" destination="m47-az-yVb" id="toN-AU-4Cm"/>
+                        <outlet property="filterView" destination="gv2-tV-VoE" id="wvr-rI-Z8k"/>
+                        <outlet property="notesFilterView" destination="Kdz-pA-boq" id="qIb-Dh-qLq"/>
                         <outlet property="sortingSegment" destination="tid-zH-MSP" id="NFX-wy-PPu"/>
                         <outlet property="spinner" destination="xOR-8p-nMy" id="Rsj-4I-dLl"/>
                         <outlet property="tableView" destination="LL2-Kl-NsH" id="bic-MX-0F2"/>

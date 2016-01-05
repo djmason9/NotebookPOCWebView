@@ -59,6 +59,12 @@
 @property (strong,nonatomic) NSDictionary               *serverList;
 @property (strong,nonatomic)NSArray                     *pageContexts;
 @property (strong,nonatomic) NSMutableArray             *noteCountArray;
+@property (strong,nonatomic) NSMutableDictionary        *filterButtonDict;
+
+//1/6/2016
+@property (weak, nonatomic) IBOutlet UIView             *filterView;
+@property (weak, nonatomic) IBOutlet UIView             *notesFilterView;
+
 
 
 @end
@@ -70,6 +76,7 @@
     [super viewDidLoad];
 
     self.arrowDown.transform = CGAffineTransformMakeRotation(M_PI/4);
+    
     [self.backButton.titleLabel setFont:[UIFont fontWithName:kFontk12UniversalIcons size:18]];
     [self.backButton setTitle:[IcoMoon iconString:k12_MENU_CLOSE] forState:UIControlStateNormal];
     self.backButton.isAccessibilityElement = YES;
@@ -149,7 +156,9 @@
 //    [[NSNotificationCenter defaultCenter] postNotificationName:ROOT_LEVEL object: nil];
     
 }
+-(IBAction)clearFilter:(id)sender{
 
+}
 -(IBAction)setFilter:(UIButton*)checkbox{
 
     BOOL isChecked = checkbox.tag;
@@ -598,6 +607,38 @@
     
 }
 
+-(void)addFilterButtons{
+    
+    CGRect firstbuttonFrame = _notesFilterView.frame;
+    
+    for(NSString *key in [_filterButtonDict allKeys]){
+        UIView *containerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 135, 44)];
+        
+        
+        UILabel *buttonTitle = [[UILabel alloc] initWithFrame:CGRectMake(27, 7, ([key length]*6), 21)];
+        [buttonTitle setText:key];
+        buttonTitle.font = [UIFont fontWithName:APPLICATION_STANDARD_FONT size:12.0];
+        
+        UIButton *filterButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [filterButton addTarget:self
+                   action:@selector(setFilter:)
+         forControlEvents:UIControlEventTouchUpInside];
+        [filterButton setTitle:@"" forState:UIControlStateNormal];
+        [filterButton setBackgroundImage:[UIImage imageNamed:@"Checkbox_Active"] forState:UIControlStateNormal];
+        filterButton.frame = CGRectMake(1, 6, 20, 20.0);
+        [containerView addSubview:filterButton];
+        [containerView addSubview:buttonTitle];
+        
+        containerView.frame = CGRectMake((firstbuttonFrame.origin.x - (buttonTitle.frame.size.width+30)), firstbuttonFrame.origin.y, buttonTitle.frame.size.width + 30, 44);
+        
+        
+        [_filterView addSubview:containerView];
+
+        firstbuttonFrame = containerView.frame;
+
+    }
+}
+
 -(void)getAllNotesPrompts:(NSDictionary*)pageDictionary{
     //TODO remove this hard coded url
     NSString *apiURL = @"https://content-service-qa.stg-prsn.com/csg/api/v2/search?indexType=d6bc33e564b4bb01adba783757a42782&fieldsToReturn=promptId,pageUrl,promptText,tags&groupBy=pageUrl";
@@ -605,6 +646,8 @@
     [Etext2NoteBookServiceManager getAllNotesPrompts:apiURL withHandler:^(NSDictionary *promptsDict, NSError *error) {
         
         [self mergePrompts:promptsDict intoNotes:pageDictionary];
+        [self addFilterButtons];
+        
          _tableView.hidden = NO;
         [self.tableView reloadData];
         [_spinner stopAnimating];
@@ -635,6 +678,10 @@
                     NSString *promptId = promptObj[@"promptId"];
                     NSString *questionText = promptObj[@"promptText"];
                     NSString *tags = promptObj[@"tags"];
+                    
+                    //use the tags for filters so gather those up
+                    if(!_filterButtonDict)_filterButtonDict = [NSMutableDictionary new];
+                    [_filterButtonDict setObject:@"button" forKey:tags];
                     
                     if([pKey rangeOfString:@"/"].location == 0){
                         pKey = [pKey substringFromIndex:1];
